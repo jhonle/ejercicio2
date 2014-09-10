@@ -1,0 +1,120 @@
+package prueba;
+import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
+import javax.swing.JList;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Button;
+import java.awt.Choice;
+import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.event.*;
+public class inicio extends JFrame {
+
+	//private JPanel contentPane;
+	private JTextField textField;
+	private JTextField txtNoel;
+
+	private fondo contentPane;
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					inicio frame = new inicio();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		new inicio();
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public inicio() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new fondo("yo1.jpg");
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		Container c = new Container();
+		c.setLayout(new FlowLayout());
+		ImageIcon ii = new ImageIcon("yo1.jpg");
+		//c.add("", ii,JLabel.CENTER);
+		//setSize(350, 300);
+		//c.setVisible(true);
+		JPanel panel = new fondo("yo1.jpg");
+		 panel.setBounds(1680, 5, 0, 297);
+		 contentPane.setLayout(null);
+		
+			JButton btnAceptar = new JButton("ACEPTAR");
+			btnAceptar.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
+			btnAceptar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pantalla nuevopantalla = new pantalla();
+				 	nuevopantalla.setVisible(true);
+				 	inicio.this.dispose();
+				}
+			});
+			btnAceptar.setBounds(48, 217, 126, 34);
+			contentPane.add(btnAceptar);
+		
+		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
+		btnRegistrar.setBounds(227, 217, 160, 34);
+		contentPane.add(btnRegistrar);
+		
+		JList list = new JList();
+		list.setBounds(90, 117, 98, -41);
+		contentPane.add(list);
+		
+		JLabel lblNombre = new JLabel("NOMBRE");
+		lblNombre.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
+		lblNombre.setBounds(38, 66, 99, 34);
+		contentPane.add(lblNombre);
+		
+		JLabel lblApellido = new JLabel("APELLIDO");
+		lblApellido.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
+		lblApellido.setBounds(38, 113, 118, 40);
+		contentPane.add(lblApellido);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
+		textField.setBounds(216, 122, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		txtNoel = new JTextField();
+		txtNoel.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
+		txtNoel.setText("NOEL");
+		txtNoel.setBounds(216, 74, 86, 20);
+		contentPane.add(txtNoel);
+		txtNoel.setColumns(10);
+		
+		JLabel lblRegistrarUsuario = new JLabel("REGISTRAR USUARIO\u206D");
+		lblRegistrarUsuario.setBounds(114, 29, 188, 26);
+		contentPane.add(lblRegistrarUsuario);
+		lblRegistrarUsuario.setForeground(new Color(204, 51, 0));
+		lblRegistrarUsuario.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
+	}
+}
