@@ -26,7 +26,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class FIGURA extends JFrame {
+public class Figura extends JFrame {
 
 	private JPanel contentPane;
 
@@ -37,7 +37,7 @@ public class FIGURA extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FIGURA frame = new FIGURA();
+					Figura frame = new Figura();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class FIGURA extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FIGURA() {
+	public Figura() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -91,9 +91,9 @@ public class FIGURA extends JFrame {
 		btnJugar.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ventana nuevoventana = new ventana();
+				VentanaJuego nuevoventana = new VentanaJuego();
 			 	nuevoventana.setVisible(true);
-			 	FIGURA.this.dispose();
+			 	Figura.this.dispose();
 			}
 		});
 		btnJugar.setBounds(168, 202, 120, 33);

@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Color;
 
-public class ventana extends JFrame {
+public class VentanaJuego extends JFrame {
 
 	private static JPanel contentPane;
 
@@ -24,7 +24,8 @@ public class ventana extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventana frame = new ventana();
+					VentanaJuego frame = new VentanaJuego();
+					frame.setSize(300,300);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +37,7 @@ public class ventana extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventana() {
+	public VentanaJuego() {
 		setBackground(Color.GRAY);
 		
 			Button b1 = new Button("A");
@@ -64,7 +65,7 @@ public class ventana extends JFrame {
 			getContentPane().add(b9);
 		}
 		public static void main1 (String[] args){
-			ventana v = new ventana();
+			VentanaJuego v = new VentanaJuego();
 			v.setSize(300, 300);
 			v.show();
 

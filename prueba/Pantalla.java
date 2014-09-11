@@ -19,7 +19,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.BoxLayout;
 import java.awt.Component;
@@ -37,7 +37,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class pantalla extends JFrame {
+public class Pantalla extends JFrame {
 
 	private fondo contentPane;
 
@@ -48,7 +48,7 @@ public class pantalla extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					pantalla frame = new pantalla();
+					Pantalla frame = new Pantalla();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,10 +60,10 @@ public class pantalla extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public pantalla() {
+	public Pantalla() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new fondo("3AB[1].JPG");
+		contentPane = new fondo("../imagenes/3AB[1].jpg");
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -86,9 +86,9 @@ public class pantalla extends JFrame {
 		 btnInicio.setFont(new Font("Viner Hand ITC", Font.PLAIN, 11));
 		 btnInicio.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent arg0) {
-		 		FIGURA nuevoFIGURA = new FIGURA();
+		 		Figura nuevoFIGURA = new Figura();
 			 	nuevoFIGURA.setVisible(true);
-			 	pantalla.this.dispose();
+			 	Pantalla.this.dispose();
 		 		
 		 	}
 		 });
@@ -98,9 +98,9 @@ public class pantalla extends JFrame {
 		 JButton btnRegistrar = new JButton("REGISTRAR");
 		 btnRegistrar.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent arg0) {
-		 		inicio nuevoinicio = new inicio();
+		 		Inicio nuevoinicio = new Inicio();
 		 	nuevoinicio.setVisible(true);
-		 	pantalla.this.dispose();
+		 	Pantalla.this.dispose();
 		 	}
 		 	
 		 });
@@ -124,7 +124,7 @@ public class pantalla extends JFrame {
 		 contentPane.add(lblTresEnRaya);
 		 nome.setBounds(488, 198, 181, 56);
 		 contentPane.add(nome);
-		 JLabel label = new JLabel("",new ImageIcon(pantalla.class.getResource("/prueba/3AB[1].JPG")),JLabel.CENTER);
+		 JLabel label = new JLabel("",new ImageIcon(Pantalla.class.getResource("../imagenes/3AB[1].jpg")),JLabel.CENTER);
 		 label.setAlignmentX(Component.CENTER_ALIGNMENT);
 		 label.setBounds(-328, 0, 1335, 563);
 		 contentPane.add(label);

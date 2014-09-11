@@ -26,7 +26,7 @@ import java.awt.Color;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.event.*;
-public class inicio extends JFrame {
+public class Inicio extends JFrame {
 
 	//private JPanel contentPane;
 	private JTextField textField;
@@ -37,20 +37,20 @@ public class inicio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					inicio frame = new inicio();
+					Inicio frame = new Inicio();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		new inicio();
+		new Inicio();
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public inicio() {
+	public Inicio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new fondo("yo1.jpg");
@@ -71,9 +71,9 @@ public class inicio extends JFrame {
 			btnAceptar.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 			btnAceptar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					pantalla nuevopantalla = new pantalla();
+					Pantalla nuevopantalla = new Pantalla();
 				 	nuevopantalla.setVisible(true);
-				 	inicio.this.dispose();
+				 	Inicio.this.dispose();
 				}
 			});
 			btnAceptar.setBounds(48, 217, 126, 34);
