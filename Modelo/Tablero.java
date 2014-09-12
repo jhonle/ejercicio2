@@ -22,15 +22,44 @@ public class Tablero
     }  
     /*Metodo que inserta en una determinada posicion 
      * del tablero la ficha*/
-    public void InsertarFicha(int fil,int col,Ficha fic)
-    {       
-        tablero[fil][col]=fic;          
+    public void InsertarFicha(int posicion,Ficha fic)
+    {                      
+    	switch (posicion)
+        {
+            case 1:tablero[0][0]=fic; break;
+            case 2:tablero[0][1]=fic; break;
+            case 3:tablero[0][2]=fic; break;
+            case 4:tablero[1][0]=fic; break;
+            case 5:tablero[1][1]=fic; break;
+            case 6:tablero[1][2]=fic; break;
+            case 7:tablero[2][0]=fic; break;
+            case 8:tablero[2][1]=fic; break;
+            case 9:tablero[2][2]=fic; break;
+        }
+    }    
+    /*Metodo que verifica si en una posicion
+     * del tablero esta vacia*/
+    public boolean VerificarCasilla(int posicion)
+    {        
+        boolean estado=false;
+    	switch (posicion)
+        {
+            case 1:estado=sub_VerificarCasilla(0,0); break;
+            case 2:estado=sub_VerificarCasilla(0,1); break;
+            case 3:estado=sub_VerificarCasilla(0,2); break;
+            case 4:estado=sub_VerificarCasilla(1,0); break;
+            case 5:estado=sub_VerificarCasilla(1,1); break;
+            case 6:estado=sub_VerificarCasilla(1,2); break;
+            case 7:estado=sub_VerificarCasilla(2,0); break;
+            case 8:estado=sub_VerificarCasilla(2,1); break;
+            case 9:estado=sub_VerificarCasilla(2,2); break;
+        }
+    	return estado;
     }
-    /*Metodo que verifica si en una determinada posicion
-     * del tablero esta vacia o no*/
-    public boolean VerificarCasilla(int fil,int col)
+    /*sub-metodo de VerificarCasilla*/
+    private boolean sub_VerificarCasilla(int fil, int col)
     {
-        if(tablero[fil][col].getFicha()=='-')
+    	if(tablero[fil][col].getFicha()=='-')
         {
             return true;
         }
@@ -38,7 +67,7 @@ public class Tablero
         {
             return false;
         }
-    }   
+    }
     /*Metodo que dado una ficha verifica el tres en raya en 
      * el tablero */
     public boolean VerificarResultado(char ficha)
