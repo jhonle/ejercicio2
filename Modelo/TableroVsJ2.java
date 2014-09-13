@@ -1,10 +1,10 @@
 package Modelo;
 
-public class Tablero 
+public class TableroVsJ2 
 {
 	private Ficha[][] tablero; 
 	//constructor de la clase Tablero
-	public Tablero()
+	public TableroVsJ2()
     {
         tablero = new Ficha[3][3];        
     }

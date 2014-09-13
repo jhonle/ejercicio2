@@ -8,6 +8,12 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Modelo.Ficha;
+import Modelo.Jugador;
+import Modelo.TableroVsJ2;
+import controlador.Coordinador;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -16,43 +22,43 @@ import java.awt.Color;
 public class VentanaJuego extends JFrame {
 
 	private static JPanel contentPane;
+	
+	Jugador  j1;
+	Jugador j2;
+	TableroVsJ2 tablero;
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaJuego frame = new VentanaJuego();
-					frame.setSize(300,300);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaJuego() {
+		setResizable(false);
 		setBackground(Color.GRAY);
 		
-			Button b1 = new Button("A");
+		this.tablero=tablero;
+		this.j1=j1;
+		this.j1=j2;
+		
+			Button b1 = new Button("1");
 			b1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					if(!posicionOcupado(1,0)){
+						marcarPosicion();
+					 }else{
+						 System.out.println("ya esta marcada la posicion");
+					 }
 				}
 			});
-			Button b2 = new Button("B");
-			Button b3 = new Button("C");
-			Button b4 = new Button("D");
-			Button b5 = new Button("E");
-			Button b6 = new Button("f");
-			Button b7 = new Button("g");
-			Button b8 = new Button("h");
-			Button b9 = new Button("i");
+			Button b2 = new Button("2");
+			Button b3 = new Button("3");
+			Button b4 = new Button("4");
+		    Button b5 = new Button("5");
+			Button b6 = new Button("6");
+			Button b7 = new Button("7");
+			Button b8 = new Button("8");
+			Button b9 = new Button("9");
 			getContentPane().setLayout(new GridLayout(3, 3));
 			getContentPane().add(b1);
 			getContentPane().add(b2);
@@ -63,24 +69,40 @@ public class VentanaJuego extends JFrame {
 			getContentPane().add(b7);
 			getContentPane().add(b8);
 			getContentPane().add(b9);
-		}
-		public static void main1 (String[] args){
-			VentanaJuego v = new VentanaJuego();
-			v.setSize(300, 300);
-			v.show();
-
-		//setDefaultCloseOperation1(JFrame.EXIT_ON_CLOSE);
-		//setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		ContentPane(contentPane);
+			
+		    this.setSize(300, 300);
 	}
 
-		private static void ContentPane(JPanel contentPane2) {
-			// TODO Auto-generated method stub
-			
-		}
+
+
+
+	protected boolean posicionOcupado(int i, int j) {
+		
+		return false;
+	}
+
+
+
+
+	protected void marcarPosicion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 	
 
+
+
+	
+	
+
+	/*	
+	public static void main(String []args){
+      VentanaJuego v = new VentanaJuego();
+		v.setVisible(true);
+	}*/
+		
 }

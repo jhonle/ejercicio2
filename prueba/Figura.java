@@ -7,28 +7,42 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.List;
 import java.awt.Choice;
+
 import javax.swing.JSeparator;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JPopupMenu;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Canvas;
+
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
+
 import java.awt.Color;
+
+import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
+
+import Modelo.Jugador;
 
 public class Figura extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField txt_nomJugador;
+	String [] figuras;
 
 	/**
 	 * Launch the application.
@@ -60,7 +74,7 @@ public class Figura extends JFrame {
 		JLabel lblJugador = new JLabel("JUGADOR");
 		lblJugador.setForeground(new Color(153, 51, 51));
 		lblJugador.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
-		lblJugador.setBounds(212, 24, 100, 33);
+		lblJugador.setBounds(34, 27, 100, 33);
 		contentPane.add(lblJugador);
 		
 		JLabel lblElijeUnaFigura = new JLabel("ELIJE UNA FIGURA");
@@ -68,9 +82,11 @@ public class Figura extends JFrame {
 		lblElijeUnaFigura.setBounds(34, 63, 190, 39);
 		contentPane.add(lblElijeUnaFigura);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(256, 68, 112, 20);
-		contentPane.add(comboBox);
+		figuras = new String[] {"X", "O"};
+		JComboBox box_listaFiguras = new JComboBox();
+		box_listaFiguras.setModel(new DefaultComboBoxModel(figuras));
+		box_listaFiguras.setBounds(256, 68, 112, 20);
+		contentPane.add(box_listaFiguras);
 		
 		JLabel lblTipo = new JLabel("TIPO");
 		lblTipo.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
@@ -91,6 +107,8 @@ public class Figura extends JFrame {
 		btnJugar.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				//Jugador = new Jugador();
 				VentanaJuego nuevoventana = new VentanaJuego();
 			 	nuevoventana.setVisible(true);
 			 	Figura.this.dispose();
@@ -98,6 +116,12 @@ public class Figura extends JFrame {
 		});
 		btnJugar.setBounds(168, 202, 120, 33);
 		contentPane.add(btnJugar);
+		
+		txt_nomJugador = new JTextField();
+		txt_nomJugador.setText("jugador1");
+		txt_nomJugador.setBounds(254, 35, 114, 19);
+		contentPane.add(txt_nomJugador);
+		txt_nomJugador.setColumns(10);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {

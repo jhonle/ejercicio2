@@ -1,16 +1,24 @@
 package Modelo;
 
-public class Ficha
+public class Ficha 
 {
-    private char ficha;
-    /*Constructor de la clase Ficha*/
-    public Ficha(char fic)
-    {
-        ficha=fic;
-    }
-    /*Metodo que retorna el tipo de ficha*/
-	public char getFicha()
-	{
-	    return ficha;
+   private char ficha;
+	public Ficha(char ficha) 
+	{		
+		this.ficha = ficha;
 	}
+	/*
+	 * SetFicha es el metodo para asignar el valor que va tener la ficha
+	 */
+    public void setFicha(char ficha)
+    {
+    	this.ficha = ficha;
+    }
+    /*
+     * GetFicha retirna el valor que tiene esa ficha(el valor es un char)
+     */
+    public char getFicha()
+    {
+    	return ficha;
+    }
 }

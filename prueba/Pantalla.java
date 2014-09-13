@@ -85,10 +85,12 @@ public class Pantalla extends JFrame {
 		 JButton btnInicio = new JButton("INICIA NUEVA PARTIDA");
 		 btnInicio.setFont(new Font("Viner Hand ITC", Font.PLAIN, 11));
 		 btnInicio.addActionListener(new ActionListener() {
-		 	public void actionPerformed(ActionEvent arg0) {
+		 	public void actionPerformed(ActionEvent arg0) 
+		 {
 		 		Figura nuevoFIGURA = new Figura();
 			 	nuevoFIGURA.setVisible(true);
 			 	Pantalla.this.dispose();
+	
 		 		
 		 	}
 		 });
