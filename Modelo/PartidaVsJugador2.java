@@ -1,5 +1,9 @@
 package Modelo;
 
+import javax.swing.JFrame;
+
+import vista.VentanaDeJuego;
+
 public class PartidaVsJugador2 extends Partida
 {
    
@@ -104,27 +108,16 @@ public class PartidaVsJugador2 extends Partida
     {
     	return ganador;
     }
+    
+    public void controlaEvento(Object boton, JFrame ventanaJuego){
+    	
+    	
+    }
 	
   
-	public void imrprimirTablero(){
-		      int cont=0;
-		    Ficha[][] tabla = tablero.getTablero();
-		    for(int fila=0; fila<3;fila++)
-		   	{
-		   		for(int columna=0;columna<3;columna++)
-		   		{
-		   			
-		   			if(cont==2){
-		   			 System.out.println("_"+tabla[fila][columna].getFicha()+"_|");
-		   			  cont=0;
-		   			}else{
-		   				System.out.print("_"+tabla[fila][columna].getFicha()+"_|");
-			   		cont++;	
-		   			}
-		   	     }
-		   	}
+	
 
-	}
+	
 
 }
 

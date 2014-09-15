@@ -124,4 +124,12 @@ public class VentanaDeJuego extends JFrame {
 			mnAyuda.add(mntmAyuda);
 
 	}
+
+
+
+
+	public void marcarBoton(int numboton, Ficha ficha) {
+	    if(numboton==1)b1.setLabel(Character.toString(ficha.getFicha()));
+	    
+	}
 }

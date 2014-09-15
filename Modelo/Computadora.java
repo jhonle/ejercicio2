@@ -15,5 +15,8 @@ public class Computadora
 	{
 		int respuesta = (int) (Math.random() * 9) + 1;
 		return respuesta;
+	}
+	public Ficha getFicha() {
+		return ficha;
 	}	
 }

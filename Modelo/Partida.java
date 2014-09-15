@@ -1,5 +1,7 @@
 package Modelo;
 
+import vista.VentanaDeJuego;
+
 public class Partida {
     protected Tablero tablero;
     protected Jugador jugador1;
@@ -48,6 +50,8 @@ public class Partida {
 		   	}
 
 	}
+
+	
 
 	
 

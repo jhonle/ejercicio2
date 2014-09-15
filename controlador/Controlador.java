@@ -10,6 +10,7 @@ import vista.VentanaDeJuego;
 import vista.VentanaDeOpciones;
 import Modelo.Partida;
 import Modelo.PartidaVsJugador2;
+import Modelo.PartidaVsPc;
 
 public class Controlador implements ActionListener {
 
@@ -82,19 +83,17 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 		if (boton == this.ventanaOpciones.btnAceptar)
 		{   
 			if(ventanaOpciones.venverificarllenado())
-			{
+			{   
 		         
 		  	     
-		  	    if(ventanaOpciones.getTipoDePartida()==2){
+		  	   
 		  	    	 tipoDeVentanaActual=3;
 				     ventanaOpciones.setVisible(false);
 			         ventanaJuego = new VentanaDeJuego();
 			         ventanaJuego.setVisible(true);
-			         iniciarPartidaVsJugador2();
+			         iniciarPartida();
 			           
-		  	    }else{
-		  	    	JOptionPane.showMessageDialog(null,"Falta Implemntar" );
-		  	    }
+		  	  
 		  	 }   
 		}     
 		
@@ -102,7 +101,11 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
     }
 	
 	
-
+     /*Este metodo se encarga de realizar las operacion correspondiente cuando 
+      * se inseta una ficha el la VentanaDeOpciones o cuando se realiza alguna operacion 
+      * dentro de esta
+      * */
+	
 	private void controlarV3(Object boton) 
 	{
 	 
@@ -129,7 +132,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
             	   ventanaJuego.dispose();
             	   ventanaJuego = new VentanaDeJuego();
 		           ventanaJuego.setVisible(true);
-		           iniciarPartidaVsJugador2();
+		           iniciarPartida();
                    
                 
             }
@@ -142,12 +145,15 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    boolean estado= partida.RealizarJugada(1);
         		    if(estado==true){
         		      ventanaJuego.b1.setLabel(ventanaOpciones.getFichaJugador(turno));
-        		     
         		      cambiarturno();
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
         	     	}
+        		    if(partida instanceof PartidaVsPc){
+        		    	((PartidaVsPc) partida).realizarJugadaPc(ventanaJuego);
+        		        cambiarturno();
+        		    }
         		
                  }
         	    if(boton == ventanaJuego.b2)
@@ -256,6 +262,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    
         	    }
         	    
+        	  
+        	    
         	    if( partida.getGanador()!=0)
             	{
         	    	if(partida.getGanador()==1){
@@ -271,6 +279,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
             	    		JOptionPane.showMessageDialog(null,"SE EMPATO EL JUEGO");
             	    	}
         	    	}
+        	    	
         	    	
         	     }
         	   
@@ -297,7 +306,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 
 			
 
-	private void iniciarPartidaVsJugador2() {
+	private void iniciarPartida() {
 		 this.ventanaJuego.b1.addActionListener(this);
  	     this.ventanaJuego.b2.addActionListener(this);
  	     this.ventanaJuego.b3.addActionListener(this);
@@ -311,6 +320,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
  	     this.ventanaJuego.menu_volverAtras.addActionListener(this);
  	     this.ventanaJuego.menu_Reiniciar.addActionListener(this);	
 	          
+ 	   if(ventanaOpciones.getTipoDePartida()==2)
+ 	   {
  	     partida = new PartidaVsJugador2();
 	     String aux1 =ventanaOpciones.getFichaJugador1();
 	     char cad1= aux1.charAt(0);//convierte a  tipo char 
@@ -319,9 +330,40 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	     ((PartidaVsJugador2) partida).CrearJugador(ventanaOpciones.getNombreJugador1(),cad1,1);
 	     ((PartidaVsJugador2) partida).CrearJugador(ventanaOpciones.getNombreJugador2(),cad2,2);
 	     ventanaJuego.lblMsg.setText("TURNO :"+ventanaOpciones.getNombreJugador(turno));
+ 	   
 	     System.out.println("inicio partida");
 	     System.out.println("jugador 1: nombre : "+ventanaOpciones.getNombreJugador1()+" ficha : "+cad1 );
 	     System.out.println("jugador 2: nombre : "+ventanaOpciones.getNombreJugador2()+" ficha : "+cad2 );
+ 	    }
+ 	    else
+ 	     {
+ 	    	if(ventanaOpciones.getTipoDePartida()==1){
+ 	         char fichaComp; 
+ 	    	 if (ventanaOpciones.getFichaJugador1().equals("X")) fichaComp='O';
+ 	    	 else fichaComp='X';
+ 	    	
+ 	    	  partida = new PartidaVsPc(fichaComp);
+ 	    	  String aux1 =ventanaOpciones.getFichaJugador1();
+ 	  	      char cad1= aux1.charAt(0);//convierte a  tipo char 
+ 	    	  ((PartidaVsPc) partida).CrearJugador(ventanaOpciones.getNombreJugador1(),cad1);  
+ 	    	 
+ 	    	  
+ 		      ventanaJuego.lblMsg.setText("PARTIDA VS PC");
+ 		      ((PartidaVsPc) partida).realizarJugadaPc(ventanaJuego);
+ 	    	  
+ 	    	 System.out.println("inicio partida");
+ 		     System.out.println("comp: nombre : "+ventanaOpciones.getNombreJugador1()+" ficha : "+fichaComp);
+ 		     System.out.println("jugador 1: nombre : "+ventanaOpciones.getNombreJugador2()+" ficha : "+cad1 );
+ 	    	
+ 	    	}
+ 	    	
+ 	    }
+	     
+	     
+	     
+	     
+	     
+	     
 		
 	}
 }
