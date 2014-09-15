@@ -130,6 +130,14 @@ public class VentanaDeJuego extends JFrame {
 
 	public void marcarBoton(int numboton, Ficha ficha) {
 	    if(numboton==1)b1.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==2)b2.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==3)b3.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==4)b4.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==5)b5.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==6)b6.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==7)b7.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==8)b8.setLabel(Character.toString(ficha.getFicha()));
+	    if(numboton==9)b9.setLabel(Character.toString(ficha.getFicha()));
 	    
 	}
 }

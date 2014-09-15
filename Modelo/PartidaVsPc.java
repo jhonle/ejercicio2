@@ -8,25 +8,34 @@ import vista.VentanaDeOpciones;
 
 public class PartidaVsPc extends Partida
 {
-	private Computadora comp;	 char fichaComp;
+	private Computadora comp;	 
 	
+	/**
+	 * */
 	public PartidaVsPc(char fichaComp)
     {    super();    
       
     comp=new Computadora(new Ficha(fichaComp));  
   
     }
-	 public boolean RealizarJugada(int posicion)
+	 
+    /**
+     * Realiza una jugada dada una posicion
+     * @return true si se inserto ficha correctamente
+     * */
+	public boolean RealizarJugada(int posicion)
 	    { 
-		 boolean estado=true;
+		  //System.out.println("###ficha comp = "+comp.getFicha().getFicha());
+		  //System.out.println("###jugadorFicha = "+jugador1.getFichaJugador().getFicha());
+		  boolean estado=true;
 	    	if(ganador==0 && contador < 9)
 	        {                                                          
 	    		if(turno==1)
 	    		{
 	    			if(tablero.VerificarCasilla(posicion)==true)
 	        		{
-	        			tablero.InsertarFicha(posicion, jugador1.getFichaJugador()) ; 
-	            		boolean resultado=tablero.VerificarResultado(jugador1.getFichaJugador().getFicha());
+	        			tablero.InsertarFicha(posicion, comp.getFicha()) ; 
+	            		boolean resultado=tablero.VerificarResultado(comp.getFicha().getFicha());
 	            		if(resultado == true)
 	            		{
 	            			ganador=1;
@@ -50,8 +59,8 @@ public class PartidaVsPc extends Partida
 	    		{
 	    			if(tablero.VerificarCasilla(posicion)==true)
 	        		{
-	        			tablero.InsertarFicha(posicion, comp.getFicha()) ; 
-	            		boolean resultado=tablero.VerificarResultado(comp.getFicha().getFicha());
+	        			tablero.InsertarFicha(posicion, jugador1.getFichaJugador()) ; 
+	            		boolean resultado=tablero.VerificarResultado(jugador1.getFichaJugador().getFicha());
 	            		if(resultado == true)
 	            		{
 	            			ganador=2;
@@ -77,25 +86,33 @@ public class PartidaVsPc extends Partida
 	 
 	 public boolean CrearJugador(String nombre,char ficha)
 	    {                                                                                         
-	    	boolean estado=false;
-	    	
+		 //System.out.println("### se creo al jugador con la ficha  "+ ficha);
 	                                            		                         			
 	    		jugador1=new Jugador(nombre,new Ficha(ficha));
-	    		estado=true;
+	    		return true;
 	       
-	    	return estado;
 	    } 
-   
+   /*
+    * @return 1=computador
+    * @return 2=jugador
+    * @return 3=empate
+    * */
 	 public int getGanador()
 	    {
 	    	return ganador;
 	    }
 	 
 	 public void realizarJugadaPc(VentanaDeJuego ventanaJuego) {
+
 		int pos= comp.NumeroAleatoreo();
-		RealizarJugada(pos);
-		ventanaJuego.marcarBoton(pos,comp.getFicha());
-			
+        while(!tablero.VerificarCasilla(pos)){
+        	pos= comp.NumeroAleatoreo();
 		}
+        RealizarJugada(pos);
+	    if( ventanaJuego!=null){ventanaJuego.marcarBoton(pos,comp.getFicha());}
+		
+	   // System.out.println("#### pc seleciono casilla "+pos);
+		
+	 }
 
 }

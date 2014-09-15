@@ -9,7 +9,10 @@ public class Partida {
     protected int contador;
     protected int turno;//1 jugador1 /2 jugador2
     protected int ganador;//1 jugador1 /2 jugador2 /3empate        
-    /*Constructor de la clase Juego*/
+   
+    /*
+     * Constructor de la clase Juego
+     * **/
     public Partida()
     {        
         tablero=new Tablero();
@@ -30,7 +33,9 @@ public class Partida {
     {
     	return ganador;
     }
-	
+	/*
+	 * Imprime La Tabla y las fichas en ella
+	 * */
     public void imrprimirTablero(){
 		    int cont=0;
 		    Ficha[][] tabla = tablero.getTablero();

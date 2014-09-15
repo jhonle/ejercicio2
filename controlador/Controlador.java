@@ -22,12 +22,16 @@ private String            tituloVentana = "";
 private int turno=1; //es para controlar que turno preciono el boton
 
 private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego
-	public Controlador() {
+	
+  public Controlador() {
 		ventanaIngreso = new VentanaDeIngreso();
 	    iniciarVista();
 	   
 	}
 	
+  /*
+   * Inicia LA Intefaz Grafica
+   * **/
 	public void iniciarVista() {
 	      ventanaIngreso.setLocationRelativeTo(null);
 	      this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
@@ -62,7 +66,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
   } 
        
 		
-
+/*
+ * este metodo controla los eventos de la Ventana de inicio
+ * **/
 	private void controlarV1(Object boton) 
 	{
 		if (boton == this.ventanaIngreso.btnIniciarPartida)
@@ -77,7 +83,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 		
 		
 	}
-	
+	/*
+	 * este metodo controla los eventos de la Ventana de Opciones
+	 * **/
 	private void controlarV2(Object boton) 
 	{
 		if (boton == this.ventanaOpciones.btnAceptar)
@@ -105,7 +113,6 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
       * se inseta una ficha el la VentanaDeOpciones o cuando se realiza alguna operacion 
       * dentro de esta
       * */
-	
 	private void controlarV3(Object boton) 
 	{
 	 
@@ -139,7 +146,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
          }else{
         	if( partida.getGanador()==0)
         	{
-        	   
+        	  boolean bandera = true;
         		if(boton == ventanaJuego.b1)
         	    {
         		    boolean estado= partida.RealizarJugada(1);
@@ -149,13 +156,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
+        	   		  bandera = false;
         	     	}
-        		    if(partida instanceof PartidaVsPc){
-        		    	((PartidaVsPc) partida).realizarJugadaPc(ventanaJuego);
-        		        cambiarturno();
-        		    }
-        		
-                 }
+        		 }
         	    if(boton == ventanaJuego.b2)
         	    {
         		    boolean estado= partida.RealizarJugada(2);
@@ -163,12 +166,13 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		      ventanaJuego.b2.setLabel(ventanaOpciones.getFichaJugador(turno));
         		      
         		      cambiarturno();
-        		    }else
-        	   	    {
+        		 }else
+        	   	  {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		  bandera = false;
+        	   	  }
         		
-                 }
+                }
         	    if(boton == ventanaJuego.b3)
         	    {
         		    boolean estado= partida.RealizarJugada(3);
@@ -179,7 +183,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		   bandera = false;
+        	   	    }
         		
                  }
         	    if(boton == ventanaJuego.b4)
@@ -192,7 +197,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		  bandera = false; 
+        	   	    }
         		
                  }
         	    if(boton == ventanaJuego.b5)
@@ -205,7 +211,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		  bandera = false;
+        	   	    }
         		
                  }
         	    if(boton == ventanaJuego.b6)
@@ -218,7 +225,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		  bandera = false;
+        	   	    }
         		
                  }
         	    if(boton == ventanaJuego.b7)
@@ -231,7 +239,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		  bandera = false;
+        	   	    }
         		
                  }
         	    if(boton == ventanaJuego.b8)
@@ -244,7 +253,8 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		  bandera = false;
+        	   	    }
         		
                  }
         	    if(boton == ventanaJuego.b9)
@@ -252,25 +262,32 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         		    boolean estado= partida.RealizarJugada(9);
         		    if(estado==true){
         		      ventanaJuego.b9.setLabel(ventanaOpciones.getFichaJugador(turno));
-        		     
         		      cambiarturno();
         		    }else
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
-        	     	}
+        	   		  bandera = false;
+        	   	    }
         		
         		    
         	    }
         	    
-        	  
+                if(partida instanceof PartidaVsPc){
+					if(bandera== true){
+    		    	((PartidaVsPc) partida).realizarJugadaPc(ventanaJuego);
+					}
+    		    	turno=1;
+    		    }
         	    
         	    if( partida.getGanador()!=0)
             	{
-        	    	if(partida.getGanador()==1){
+            	   if(partida instanceof PartidaVsJugador2){
+        	    	
+            	       if(partida.getGanador()==1){
         	    		ventanaJuego.lblMsg.setText("GANADOR : "+ventanaOpciones.getNombreJugador1());
         	    		JOptionPane.showMessageDialog(null,"Gano el Jugador"+ventanaOpciones.getNombreJugador1() );
         	    		
-        	    	}else{
+        	    	   }else{
         	    		if(partida.getGanador()==2){
         	    			ventanaJuego.lblMsg.setText("GANADOR : "+ventanaOpciones.getNombreJugador2());
         	    			JOptionPane.showMessageDialog(null,"Gano el Jugador"+ventanaOpciones.getNombreJugador2() );
@@ -278,20 +295,50 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
             	    		ventanaJuego.lblMsg.setText("EMPATE ");
             	    		JOptionPane.showMessageDialog(null,"SE EMPATO EL JUEGO");
             	    	}
-        	    	}
+        	    	   }
         	    	
+        	        }else{
+        	           
+        	            if(partida.getGanador()==1){
+        	    		ventanaJuego.lblMsg.setText("GANADOR PC");
+        	    		JOptionPane.showMessageDialog(null,"Gano el Jugador: PC" );
+        	    		
+        	    	   }else{
+        	    		    if(partida.getGanador()==2){
+        	    			ventanaJuego.lblMsg.setText("GANADOR : "+ventanaOpciones.getNombreJugador1());
+        	    			JOptionPane.showMessageDialog(null,"GANADOR : "+ventanaOpciones.getNombreJugador1() );
+            	    	     }else{
+            	    		ventanaJuego.lblMsg.setText("EMPATE ");
+            	    		JOptionPane.showMessageDialog(null,"SE EMPATO EL JUEGO");
+            	    	   } 
+        	    	   }
+        	           
+        	           
+        	           
+        	           }
+        	     
+        	       }
+        	       
+        	       
+        	       
+        	      
+        	     
+        	     
         	    	
-        	     }
         	   
         	    
         	    partida.imrprimirTablero();
-        	    System.out.println("es el turno de "+turno); 
+        	    //System.out.println("es el turno de "+turno); 
 	        }
 
+          }
        }
-        }
-	}
+}
 
+	/*
+	 * controla el turno de los jugadores
+	 * cuando el juego es vs Jugador 2
+	 * */
 	private void cambiarturno() {
 		if (turno ==1)
 		{
@@ -305,7 +352,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	}
 
 			
-
+     /*
+      *Inicia Una Nueva Partida
+      * */
 	private void iniciarPartida() {
 		 this.ventanaJuego.b1.addActionListener(this);
  	     this.ventanaJuego.b2.addActionListener(this);
@@ -331,9 +380,10 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	     ((PartidaVsJugador2) partida).CrearJugador(ventanaOpciones.getNombreJugador2(),cad2,2);
 	     ventanaJuego.lblMsg.setText("TURNO :"+ventanaOpciones.getNombreJugador(turno));
  	   
-	     System.out.println("inicio partida");
+	    /* System.out.println("inicio partida");
 	     System.out.println("jugador 1: nombre : "+ventanaOpciones.getNombreJugador1()+" ficha : "+cad1 );
 	     System.out.println("jugador 2: nombre : "+ventanaOpciones.getNombreJugador2()+" ficha : "+cad2 );
+ 	    */
  	    }
  	    else
  	     {
@@ -350,11 +400,12 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
  	    	  
  		      ventanaJuego.lblMsg.setText("PARTIDA VS PC");
  		      ((PartidaVsPc) partida).realizarJugadaPc(ventanaJuego);
+ 		   
  	    	  
- 	    	 System.out.println("inicio partida");
- 		     System.out.println("comp: nombre : "+ventanaOpciones.getNombreJugador1()+" ficha : "+fichaComp);
- 		     System.out.println("jugador 1: nombre : "+ventanaOpciones.getNombreJugador2()+" ficha : "+cad1 );
- 	    	
+ 	    	/* System.out.println("inicio partida");
+ 		     System.out.println("computaroa : "+" ficha : "+fichaComp);
+ 		     System.out.println("jugador 1: nombre : "+ventanaOpciones.getNombreJugador1()+" ficha : "+cad1 );
+ 	    	*/
  	    	}
  	    	
  	    }

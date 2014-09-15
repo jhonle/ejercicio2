@@ -33,7 +33,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	
 	public  VentanaDeOpciones() 
 	{
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  setSize(400,400);
 	  setLocation(200,100);
 	  getContentPane().setLayout(null);
