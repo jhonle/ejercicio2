@@ -16,7 +16,7 @@ public class PartidaVsJugador2 extends Partida
     {    super();    
         
     }
-    /*metodo que reinicia las variables del juego*/
+    /**metodo que reinicia las variables del juego*/
     public void JugarOtraVez()
     {
     	tablero.LlenarTablero();
@@ -24,7 +24,7 @@ public class PartidaVsJugador2 extends Partida
     	ganador=0;
     	turno=1;
     }
-    /*metodo que dada una posicion, verifica la casilla, inserta la ficha 
+    /**metodo que dada una posicion, verifica la casilla, inserta la ficha 
      *de acuerdo al turno del jugador y verifica el resultado(gana-empate)*/
     public boolean RealizarJugada(int posicion)
     {                                                                     	
@@ -84,7 +84,7 @@ public class PartidaVsJugador2 extends Partida
         }
     	return estado;
     }
-    /*metodo que crea un jugador*/
+    /**metodo que crea un jugador*/
     public boolean CrearJugador(String nombre,char ficha,int nrojugador)
     {                                                                                         
     	boolean estado=false;
@@ -103,7 +103,7 @@ public class PartidaVsJugador2 extends Partida
     	}
     	return estado;
     } 
-    /*retorna quien es ganador*/
+    /**retorna quien es ganador*/
     public int getGanador()
     {
     	return ganador;

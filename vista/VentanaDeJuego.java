@@ -24,21 +24,23 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
 
 public class VentanaDeJuego extends JFrame {
 
 	private static JPanel contentPane;
 	
 	
-	public Button b1;
-	public Button b2;
-	public Button b3;
-	public Button b4;
-	public Button b5;
-	public Button b6;
-	public Button b7;
-	public Button b8;
-	public Button b9;
+	public JButton b1;
+	public JButton b2;
+	public JButton b3;
+	public JButton b4;
+	public JButton b5;
+	public JButton b6;
+	public JButton b7;
+	public JButton b8;
+	public JButton b9;
 	private JMenuBar menuBar;
 	private JMenu mnMenu;
 	public JMenuItem menu_Reiniciar;
@@ -56,39 +58,50 @@ public class VentanaDeJuego extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaDeJuego() {
+		getContentPane().setBackground(new Color(102, 204, 255));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setResizable(false);
 		setBackground(Color.GRAY);
-			getContentPane().setLayout(null);
-			
+	    getContentPane().setLayout(null);
+		
 			panel = new JPanel();
-			panel.setBounds(0, 69, 294, 223);
+			panel.setBounds(0, 26, 294, 266);
 			getContentPane().add(panel);
 			panel.setLayout(new GridLayout(3, 3, 0, 0));
 			
 			
 			
-				b1 = new Button("");
-				panel.add(b1);
-			b2 = new Button("");
+		    b1 = new JButton("");
+		    b1.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
+		    panel.add(b1);
+			b2 = new JButton("");
+			b2.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b2);
-			b3 = new Button("");
+			b3 = new JButton("");
+			b3.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b3);
-			b4 = new Button("");
+			b4 = new JButton("");
+			b4.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b4);
-			b5 = new Button("");
+			b5 = new JButton("");
+			b5.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b5);
-			b6 = new Button("");
+			b6 = new JButton("");
+			b6.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b6);
-			b7 = new Button("");
+			b7 = new JButton("");
+			b7.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b7);
-			b8 = new Button("");
+			b8 = new JButton("");
+			b8.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b8);
-			b9 = new Button("");
+			b9 = new JButton("");
+			b9.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 			panel.add(b9);
 			
 			lblMsg = new JLabel("");
-			lblMsg.setBounds(93, 42, 189, 15);
+			lblMsg.setFont(new Font("Waree", Font.BOLD | Font.ITALIC, 14));
+			lblMsg.setBounds(62, 0, 170, 23);
 			getContentPane().add(lblMsg);
 			this.setSize(300, 343);
 			
@@ -127,7 +140,11 @@ public class VentanaDeJuego extends JFrame {
 
 
 
-
+/**
+ * @param numboton  numero de boton que se quiere cambiar su texto(label)
+ * @param ficha  Ficha que contiene el Texto para modifical dicho boton               
+ * @return void
+ * */
 	public void marcarBoton(int numboton, Ficha ficha) {
 	    if(numboton==1)b1.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==2)b2.setLabel(Character.toString(ficha.getFicha()));

@@ -83,8 +83,13 @@ public class PartidaVsPc extends Partida
 	        }
 	    	return estado;
 	    }
-	 
-	 public boolean CrearJugador(String nombre,char ficha)
+	 /**
+	  * Crea un nuevo jugador. 
+	  * solo crea 1 jugador 
+	  * @param nombre nombre del jugador
+	  * @param ficha ficha  del jugador
+	  * */
+	 public boolean crearJugador(String nombre,char ficha)
 	    {                                                                                         
 		 //System.out.println("### se creo al jugador con la ficha  "+ ficha);
 	                                            		                         			
@@ -102,6 +107,10 @@ public class PartidaVsPc extends Partida
 	    	return ganador;
 	    }
 	 
+	 /**
+	  * Realiza una jugada Automatica por la PC
+	  *  @param ventanaJuego es la ventana en donde ingresara la ficha
+	  * */
 	 public void realizarJugadaPc(VentanaDeJuego ventanaJuego) {
 
 		int pos= comp.NumeroAleatoreo();

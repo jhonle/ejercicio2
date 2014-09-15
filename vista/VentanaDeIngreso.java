@@ -14,27 +14,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class VentanaDeIngreso extends JFrame {
 
 	private JPanel contentPane;
 	public JButton btnIniciarPartida;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaDeIngreso frame = new VentanaDeIngreso();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -42,8 +29,9 @@ public class VentanaDeIngreso extends JFrame {
 	public VentanaDeIngreso() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		this.setTitle("BIENBENIDO");
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(51, 102, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -62,6 +50,7 @@ public class VentanaDeIngreso extends JFrame {
 		contentPane.add(btnCargarPartida);
 		
 		JButton btnJugarEnLan = new JButton("JUGAR EN LAN");
+		btnJugarEnLan.setEnabled(false);
 		btnJugarEnLan.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 		btnJugarEnLan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -91,5 +80,10 @@ public class VentanaDeIngreso extends JFrame {
 		lblTresEnRaya.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 17));
 		lblTresEnRaya.setBounds(73, 27, 145, 41);
 		contentPane.add(lblTresEnRaya);
+		
+		JLabel lblImg = new JLabel("img");
+		lblImg.setIcon(new ImageIcon(VentanaDeIngreso.class.getResource("/vista/tres_en_raya.jpg")));
+		lblImg.setBounds(12, 67, 187, 168);
+		contentPane.add(lblImg);
 	}
 }

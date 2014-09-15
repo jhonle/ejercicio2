@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.Color;
 
 public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeListener
 {
@@ -37,6 +38,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	  setSize(400,400);
 	  setLocation(200,100);
 	  getContentPane().setLayout(null);
+	  setTitle("OPCIONES DE PARTIDA");
 	  CargarPantalla();
 	}
 	/*
@@ -46,7 +48,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	{
 		panel = new JPanel();
 		panel.setBounds(0,0,400,400);
-		panel.setBackground(getBackground().WHITE);
+		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setLayout(null);
 		getContentPane().add(panel);
 		
@@ -106,6 +108,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		panel.add(jugador2);
 		
 		nombre2 = new JTextField();
+		nombre2.setBackground(Color.CYAN);
 		nombre2.setText("jugador2");
 		nombre2.setBounds(173,218,120,25);
 		nombre2.setVisible(false);

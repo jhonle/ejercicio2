@@ -22,16 +22,18 @@ private String            tituloVentana = "";
 private int turno=1; //es para controlar que turno preciono el boton
 
 private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego
-	
+ /**
+  * Metodo Contructor
+  * */	
   public Controlador() {
 		ventanaIngreso = new VentanaDeIngreso();
 	    iniciarVista();
 	   
 	}
 	
-  /*
+  /**
    * Inicia LA Intefaz Grafica
-   * **/
+   * */
 	public void iniciarVista() {
 	      ventanaIngreso.setLocationRelativeTo(null);
 	      this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
@@ -66,9 +68,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
   } 
        
 		
-/*
+/**
  * este metodo controla los eventos de la Ventana de inicio
- * **/
+ * */
 	private void controlarV1(Object boton) 
 	{
 		if (boton == this.ventanaIngreso.btnIniciarPartida)
@@ -83,9 +85,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 		
 		
 	}
-	/*
+	/**
 	 * este metodo controla los eventos de la Ventana de Opciones
-	 * **/
+	 * */
 	private void controlarV2(Object boton) 
 	{
 		if (boton == this.ventanaOpciones.btnAceptar)
@@ -109,8 +111,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
     }
 	
 	
-     /*Este metodo se encarga de realizar las operacion correspondiente cuando 
-      * se inseta una ficha el la VentanaDeOpciones o cuando se realiza alguna operacion 
+     /**
+      * Este metodo se encarga de realizar las operacion correspondiente cuando 
+      * se inseta una ficha el la VentanaJuego o cuando se realiza alguna operacion 
       * dentro de esta
       * */
 	private void controlarV3(Object boton) 
@@ -146,7 +149,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
          }else{
         	if( partida.getGanador()==0)
         	{
-        	  boolean bandera = true;
+        	    boolean bandera = true;
         		if(boton == ventanaJuego.b1)
         	    {
         		    boolean estado= partida.RealizarJugada(1);
@@ -267,17 +270,19 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         	   	    {
         	   		  JOptionPane.showMessageDialog(null,"no puedes selecionar esta casilla!" );
         	   		  bandera = false;
+        	   		  
         	   	    }
-        		
-        		    
-        	    }
+        		   
+        	   }
         	    
+        	     
+        	    if(partida.getGanador()==0){
                 if(partida instanceof PartidaVsPc){
 					if(bandera== true){
     		    	((PartidaVsPc) partida).realizarJugadaPc(ventanaJuego);
 					}
     		    	turno=1;
-    		    }
+    		    }}
         	    
         	    if( partida.getGanador()!=0)
             	{
@@ -327,7 +332,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
         	    	
         	   
         	    
-        	    partida.imrprimirTablero();
+        	 //   partida.imrprimirTablero();
         	    //System.out.println("es el turno de "+turno); 
 	        }
 
@@ -335,7 +340,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
        }
 }
 
-	/*
+	/**
 	 * controla el turno de los jugadores
 	 * cuando el juego es vs Jugador 2
 	 * */
@@ -347,12 +352,14 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	    {
 			turno =1;
 	    }
-		ventanaJuego.lblMsg.setText(" TURNO: "+ventanaOpciones.getNombreJugador(turno));
+		
+	if(partida instanceof PartidaVsJugador2)ventanaJuego.lblMsg.setText(" TURNO: "+ventanaOpciones.getNombreJugador(turno));
 	    
 	}
 
 			
-     /*
+     /**
+      *
       *Inicia Una Nueva Partida
       * */
 	private void iniciarPartida() {
@@ -379,7 +386,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	     ((PartidaVsJugador2) partida).CrearJugador(ventanaOpciones.getNombreJugador1(),cad1,1);
 	     ((PartidaVsJugador2) partida).CrearJugador(ventanaOpciones.getNombreJugador2(),cad2,2);
 	     ventanaJuego.lblMsg.setText("TURNO :"+ventanaOpciones.getNombreJugador(turno));
- 	   
+ 	     ventanaJuego.setTitle("PARTIDA MULTIJUGADOR");
 	    /* System.out.println("inicio partida");
 	     System.out.println("jugador 1: nombre : "+ventanaOpciones.getNombreJugador1()+" ficha : "+cad1 );
 	     System.out.println("jugador 2: nombre : "+ventanaOpciones.getNombreJugador2()+" ficha : "+cad2 );
@@ -395,11 +402,12 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
  	    	  partida = new PartidaVsPc(fichaComp);
  	    	  String aux1 =ventanaOpciones.getFichaJugador1();
  	  	      char cad1= aux1.charAt(0);//convierte a  tipo char 
- 	    	  ((PartidaVsPc) partida).CrearJugador(ventanaOpciones.getNombreJugador1(),cad1);  
+ 	    	  ((PartidaVsPc) partida).crearJugador(ventanaOpciones.getNombreJugador1(),cad1);  
  	    	 
  	    	  
  		      ventanaJuego.lblMsg.setText("PARTIDA VS PC");
  		      ((PartidaVsPc) partida).realizarJugadaPc(ventanaJuego);
+                ventanaJuego.setTitle("PARIDA VS PC");
  		   
  	    	  
  	    	/* System.out.println("inicio partida");

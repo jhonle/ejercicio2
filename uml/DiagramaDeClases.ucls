@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="vista.VentanaDeJuego" project="tres_en_raya" 
     file="/tres_en_raya/src/vista/VentanaDeJuego.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="204" y="399"/>    
+    <position height="-1" width="-1" x="136" y="307"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -146,6 +146,7 @@
     <end type="TARGET" refId="7"/>  
   </dependency>  
   <association id="22">    
+    <bendpoint x="1586" y="666"/>    
     <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="23" name="ficha"/>      
       <multiplicity id="24" minimum="0" maximum="1"/>    

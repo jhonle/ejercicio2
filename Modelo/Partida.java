@@ -2,6 +2,12 @@ package Modelo;
 
 import vista.VentanaDeJuego;
 
+/**
+ * 
+ *generaliza lo tipos de jugada: Vs PC, Vs Jugador2, LAN etc
+ *  
+ *   
+ * */
 public class Partida {
     protected Tablero tablero;
     protected Jugador jugador1;
@@ -22,19 +28,26 @@ public class Partida {
         tablero.LlenarTablero();
     }
  
-     /*metodo que dada una posicion, verifica la casilla, inserta la ficha 
-     *de acuerdo al turno del jugador y verifica el resultado(gana-empate)*/
+     /**
+      * metodo que dada una posicion, verifica la casilla, inserta la ficha 
+     *  de acuerdo al turno del jugador y verifica el resultado(gana-empate)
+     *  @param posicion posicion a la que se desea insertar  la dicha
+     *@return boolean: FALSE si se realizo si se inseto, TRUE si no
+     **/
     public boolean RealizarJugada(int posicion)
     {                                                                     	
         return true;
     } 
-    /*retorna quien es ganador*/
+    /**
+     * retorna quien es ganador
+     * */
     public int getGanador()
     {
     	return ganador;
     }
-	/*
+	/**
 	 * Imprime La Tabla y las fichas en ella
+	 * 
 	 * */
     public void imrprimirTablero(){
 		    int cont=0;

@@ -10,12 +10,12 @@ public class Jugador
 		nombre=nom;
 		ficha=fic;
 	}
-	/*Metodo que retorna el nombre del jugador*/
+	/**Metodo que retorna el nombre del jugador*/
 	public String getNombreJugador()
 	{
 		return nombre;
 	}
-	/*Metodo que retorna la ficha del jugador*/
+	/**Metodo que retorna la ficha del jugador*/
 	public Ficha getFichaJugador()
 	{
 		return ficha;

@@ -7,7 +7,7 @@ import vista.VentanaDeJuego;
 public class PruevaDePartidaVsPC {
 	public static void main(String[] args) {
 		Partida modelo = new PartidaVsPc('X');
-		((PartidaVsPc) modelo).CrearJugador("Marcelo", 'O');
+		((PartidaVsPc) modelo).crearJugador("Marcelo", 'O');
 		
 		 
 		((PartidaVsPc) modelo).realizarJugadaPc(null);
