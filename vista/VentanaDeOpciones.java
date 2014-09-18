@@ -35,7 +35,11 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	private String nombreJugador2;
 	private int tipoJuego;   // 0 si no se selecciono ningun vs. 1 si se selecciono vs computador. Y 2 si se selecciono jugador 2
 	private String img[] = {"Ficha1","Ficha2","Ficha3","Ficha4"};
-	private String img2[] = {"Ficha1","Ficha2","Ficha3","Ficha4"};
+	private String img2[] = {"Ficha2","Ficha3","Ficha4"};
+	/**Vector que contiene los iconos de las fichas
+	 * y cambia de acuerdo al caso que se requiera 
+	 * */
+	//caso 0 todos completos
 	private ImageIcon icono[] = 	
 	{
 			new ImageIcon(getClass().getResource("/imagenes/Bart.png")),
@@ -43,7 +47,35 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 			new ImageIcon(getClass().getResource("/imagenes/Maggie.png")),
 			new ImageIcon(getClass().getResource("/imagenes/Marge.png"))
 	};
-	
+	//Cuando eligen la Ficha1
+	private ImageIcon icono1[] = 	
+	{		
+			new ImageIcon(getClass().getResource("/imagenes/Homero.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Maggie.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Marge.png"))
+	};
+	//Cuando eligen la Ficha2
+	private ImageIcon icono2[] = 	
+	{
+			new ImageIcon(getClass().getResource("/imagenes/Bart.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Maggie.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Marge.png"))
+	};
+	//Cuando eligen la Ficha3
+	private ImageIcon icono3[] = 	
+	{
+			new ImageIcon(getClass().getResource("/imagenes/Bart.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Homero.png")),			
+			new ImageIcon(getClass().getResource("/imagenes/Marge.png"))
+	};
+	//Cuando eligen la Ficha4
+	private ImageIcon icono4[] = 	
+	{
+			new ImageIcon(getClass().getResource("/imagenes/Bart.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Homero.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Maggie.png"))
+	};
+	/*Costructor de la clase VentanaDeOpciones*/
 	public  VentanaDeOpciones() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,12 +111,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	    opcion1 =new JComboBox(img);
 	    imagen.setIcon(icono[0]);
 	    opcion1.setBounds(173,61,100,30);
-	    panel.add(opcion1);
-	    
-	    /*opcion1 = new JComboBox();
-	    opcion1.setModel(new DefaultComboBoxModel(new String[] {"X", "O"}));
-	    opcion1.setBounds(173,61,100,30);
-	    panel.add(opcion1);*/
+	    panel.add(opcion1);	    	   
 			    
 		JLabel vs = new JLabel("Jugar vs");
 		vs.setBounds(155,115,110,25);	
@@ -118,18 +145,12 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	    imagen2.setVisible(false);
 	    panel.add(imagen2);
 		
-	    opcion2 =new JComboBox(img);
-	    imagen2.setIcon(icono[0]);
+	    opcion2 =new JComboBox();
+	    //imagen2.setIcon(icono[0]);
 	    opcion2.setBounds(173,254,100,30);
 	    opcion2.setVisible(false);
 	    panel.add(opcion2);
-	    
-	    /*opcion2 = new JComboBox();
-	    opcion2.setModel(new DefaultComboBoxModel(new String[] {"X", "O"}));
-	    opcion2.setBounds(173,254,100,30);
-	    opcion2.setVisible(false);
-	    panel.add(opcion2);*/
-		
+	    		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(228, 307,100,25);
 		panel.add(btnAceptar);		
@@ -149,12 +170,13 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		btnAceptar.addActionListener(this);		
 		persona.addChangeListener(this);
 		computadora.addChangeListener(this); 
-		//opcion1.addActionListener(this);
+		opcion1.addActionListener(this);
 		opcion1.addItemListener(this);
 		opcion2.addItemListener(this);
 	}
 	/**
-	 * Cambia la imagen del JLabel cada vez que selecione una opcion del JComboBox 
+	 * Este metodo cambia el estado de la imagen del JLabel 
+	 * cada vez que selecione una opcion del JComboBox(opcion1-opcion2) 
 	 * */
 	@Override
 	public void itemStateChanged(ItemEvent a)
@@ -184,28 +206,83 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		}
 		if(a.getSource().equals(opcion2))
 		{
-			if(opcion2.getSelectedIndex() == 1)
-			{
-				imagen2.setIcon(icono[1]);
+			if(opcion1.getSelectedItem().toString()=="Ficha1")
+			{				
+				if(opcion2.getSelectedIndex() == 0)
+				{
+					imagen2.setIcon(icono1[0]);
+				}
+				if(opcion2.getSelectedIndex() == 1)
+				{
+					imagen2.setIcon(icono1[1]);
+				}
+				if(opcion2.getSelectedIndex() == 3)
+				{
+					imagen2.setIcon(icono1[3]);
+				}
+				if(opcion2.getSelectedIndex() == 2)
+				{
+					imagen2.setIcon(icono1[2]);
+				}
 			}
-			if(opcion2.getSelectedIndex() == 2)
-			{
-				imagen2.setIcon(icono[2]);
+			if(opcion1.getSelectedItem().toString()=="Ficha2")
+			{				
+				if(opcion2.getSelectedIndex() == 0)
+				{
+					imagen2.setIcon(icono2[0]);
+				}
+				if(opcion2.getSelectedIndex() == 1)
+				{
+					imagen2.setIcon(icono2[1]);
+				}
+				if(opcion2.getSelectedIndex() == 3)
+				{
+					imagen2.setIcon(icono2[3]);
+				}
+				if(opcion2.getSelectedIndex() == 2)
+				{
+					imagen2.setIcon(icono2[2]);
+				}
 			}
-			if(opcion2.getSelectedIndex() == 3)
-			{
-				imagen2.setIcon(icono[3]);
+			if(opcion1.getSelectedItem().toString()=="Ficha3")
+			{				
+				if(opcion2.getSelectedIndex() == 0)
+				{
+					imagen2.setIcon(icono3[0]);
+				}
+				if(opcion2.getSelectedIndex() == 1)
+				{
+					imagen2.setIcon(icono3[1]);
+				}
+				if(opcion2.getSelectedIndex() == 3)
+				{
+					imagen2.setIcon(icono3[3]);
+				}
+				if(opcion2.getSelectedIndex() == 2)
+				{
+					imagen2.setIcon(icono3[2]);
+				}
 			}
-			if(opcion2.getSelectedIndex() == 4)
-			{
-				imagen2.setIcon(icono[4]);
-			}
-			if(opcion2.getSelectedIndex() == 0)
-			{
-				imagen2.setIcon(icono[0]);
-			}
-		}
-				
+			if(opcion1.getSelectedItem().toString()=="Ficha4")
+			{				
+				if(opcion2.getSelectedIndex() == 0)
+				{
+					imagen2.setIcon(icono4[0]);
+				}
+				if(opcion2.getSelectedIndex() == 1)
+				{
+					imagen2.setIcon(icono4[1]);
+				}
+				if(opcion2.getSelectedIndex() == 3)
+				{
+					imagen2.setIcon(icono4[3]);
+				}
+				if(opcion2.getSelectedIndex() == 2)
+				{
+					imagen2.setIcon(icono4[2]);
+				}
+			}					
+		}				
 	}
 	/*
 	 * el metodo stateChanged revisa que radio button presionaste
@@ -225,7 +302,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 			tipoJuego =2;
 			nombreJugador1= nombre1.getText();
 			nombreJugador2= nombre2.getText();
-			OpcionJugador2();
+			OpcionJugador2();						
 		}		
 	}
 	/*
@@ -255,20 +332,32 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	
 	/*
 	 * actionPerformed este metodo es para revisar que ficha selecciono el jugador1
-	 * para que el jugador2 no pueda usar la misma ficha
-	 * y tambien para darl funcion aceptar que es la que hae que empieze el juego
+	 * para que el jugador2 no pueda usar la misma ficha(figura)
+	 * y tambien para darle funcion aceptar que es la que hace que empieze el juego
 	 * 
 	 */
     public void actionPerformed(ActionEvent e)
     {
-    	if("X" == String.valueOf(opcion1.getSelectedItem()))
+    	if("Ficha1" == String.valueOf(opcion1.getSelectedItem()))
     	{
-    		opcion2.setModel(new DefaultComboBoxModel(new String[] {"O"}));
+    		opcion2.setModel(new DefaultComboBoxModel(new String[] {"Ficha2","Ficha3","Ficha4"}));
+    		imagen2.setIcon(icono1[0]);
     	}
-    	else if("O" == String.valueOf(opcion1.getSelectedItem()))
+    	if("Ficha2" == String.valueOf(opcion1.getSelectedItem()))
     	{
-    		opcion2.setModel(new DefaultComboBoxModel(new String[] {"X"}));
-    	}     	    	
+    		opcion2.setModel(new DefaultComboBoxModel(new String[] {"Ficha1","Ficha3","Ficha4"}));
+    		imagen2.setIcon(icono2[0]);
+    	}
+    	if("Ficha3" == String.valueOf(opcion1.getSelectedItem()))
+    	{
+    		opcion2.setModel(new DefaultComboBoxModel(new String[] {"Ficha1","Ficha2","Ficha4"}));
+    		imagen2.setIcon(icono3[0]);
+    	}
+    	if("Ficha4" == String.valueOf(opcion1.getSelectedItem()))
+    	{
+    		opcion2.setModel(new DefaultComboBoxModel(new String[] {"Ficha1","Ficha2","Ficha3"}));
+    		imagen2.setIcon(icono4[0]);
+    	}
     }      
     public String getNombreJugador1()
     {
@@ -280,17 +369,11 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
     	return nombreJugador2;
     }    
     public String getFichaJugador1()
-    {            	  
-    	//Object e = opcion1.getSelectedItem();
-	    //String years = String.valueOf(e); 
-	    //char cad= years.charAt(0); 	     
+    {            	      	 	     
 	    return "X";	       	          
     }
     public String getFichaJugador2()
-    {    	  
-    	//Object e = opcion2.getSelectedItem();
-	    //String years = String.valueOf(e); 
-	    // char cad= years.charAt(0); 	       
+    {    	   	       
 	    return "O";
     }        
     /*
