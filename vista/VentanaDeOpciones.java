@@ -2,9 +2,12 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -19,9 +22,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.Color;
 
-public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeListener
+public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeListener,ItemListener
 {
-	private JLabel jugador2,ficha2;
+	private JLabel jugador2,ficha2,imagen,imagen2;
 	private JTextField nombre1,nombre2;
 	private JComboBox opcion1,opcion2;
 	private JRadioButton computadora,persona;
@@ -31,15 +34,24 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	private String nombreJugador1;
 	private String nombreJugador2;
 	private int tipoJuego;   // 0 si no se selecciono ningun vs. 1 si se selecciono vs computador. Y 2 si se selecciono jugador 2
+	private String img[] = {"Ficha1","Ficha2","Ficha3","Ficha4"};
+	private String img2[] = {"Ficha1","Ficha2","Ficha3","Ficha4"};
+	private ImageIcon icono[] = 	
+	{
+			new ImageIcon(getClass().getResource("/imagenes/Bart.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Homero.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Maggie.png")),
+			new ImageIcon(getClass().getResource("/imagenes/Marge.png"))
+	};
 	
 	public  VentanaDeOpciones() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	  setSize(400,400);
-	  setLocation(200,100);
-	  getContentPane().setLayout(null);
-	  setTitle("OPCIONES DE PARTIDA");
-	  CargarPantalla();
+		setSize(400,400);
+		setLocation(200,100);
+		getContentPane().setLayout(null);
+		setTitle("OPCIONES DE PARTIDA");
+		CargarPantalla();
 	}
 	/*
 	 *  CargarPantalla: este metodo carga la pantalla inicial del juego 
@@ -59,11 +71,20 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	    JLabel ficha1 = new JLabel("Escoga su ficha :");
 	    ficha1.setBounds(33, 66, 130,25);
 	    panel.add(ficha1);
-		
-		opcion1 = new JComboBox();
-	    opcion1.setModel(new DefaultComboBoxModel(new String[] {"X", "O"}));
+	    
+	    imagen = new JLabel(" ");
+	    imagen.setBounds(290, 40, 100, 80);
+	    panel.add(imagen);
+	    
+	    opcion1 =new JComboBox(img);
+	    imagen.setIcon(icono[0]);
 	    opcion1.setBounds(173,61,100,30);
 	    panel.add(opcion1);
+	    
+	    /*opcion1 = new JComboBox();
+	    opcion1.setModel(new DefaultComboBoxModel(new String[] {"X", "O"}));
+	    opcion1.setBounds(173,61,100,30);
+	    panel.add(opcion1);*/
 			    
 		JLabel vs = new JLabel("Jugar vs");
 		vs.setBounds(155,115,110,25);	
@@ -92,11 +113,22 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		ficha2.setVisible(false);
 		panel.add(ficha2);
 		
-		opcion2 = new JComboBox();
-	    opcion2.setModel(new DefaultComboBoxModel(new String[] {"X", "O"}));
+		imagen2 = new JLabel(" ");
+	    imagen2.setBounds(300, 230, 100, 80);
+	    imagen2.setVisible(false);
+	    panel.add(imagen2);
+		
+	    opcion2 =new JComboBox(img);
+	    imagen2.setIcon(icono[0]);
 	    opcion2.setBounds(173,254,100,30);
 	    opcion2.setVisible(false);
 	    panel.add(opcion2);
+	    
+	    /*opcion2 = new JComboBox();
+	    opcion2.setModel(new DefaultComboBoxModel(new String[] {"X", "O"}));
+	    opcion2.setBounds(173,254,100,30);
+	    opcion2.setVisible(false);
+	    panel.add(opcion2);*/
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(228, 307,100,25);
@@ -117,7 +149,63 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		btnAceptar.addActionListener(this);		
 		persona.addChangeListener(this);
 		computadora.addChangeListener(this); 
-		opcion1.addActionListener(this);
+		//opcion1.addActionListener(this);
+		opcion1.addItemListener(this);
+		opcion2.addItemListener(this);
+	}
+	/**
+	 * Cambia la imagen del JLabel cada vez que selecione una opcion del JComboBox 
+	 * */
+	@Override
+	public void itemStateChanged(ItemEvent a)
+	{
+		if(a.getSource().equals(opcion1))
+		{
+			if(opcion1.getSelectedIndex() == 1)
+			{
+				imagen.setIcon(icono[1]);
+			}
+			if(opcion1.getSelectedIndex() == 2)
+			{
+				imagen.setIcon(icono[2]);
+			}
+			if(opcion1.getSelectedIndex() == 3)
+			{
+				imagen.setIcon(icono[3]);
+			}
+			if(opcion1.getSelectedIndex() == 4)
+			{
+				imagen.setIcon(icono[4]);
+			}
+			if(opcion1.getSelectedIndex() == 0)
+			{
+				imagen.setIcon(icono[0]);
+			}
+		}
+		if(a.getSource().equals(opcion2))
+		{
+			if(opcion2.getSelectedIndex() == 1)
+			{
+				imagen2.setIcon(icono[1]);
+			}
+			if(opcion2.getSelectedIndex() == 2)
+			{
+				imagen2.setIcon(icono[2]);
+			}
+			if(opcion2.getSelectedIndex() == 3)
+			{
+				imagen2.setIcon(icono[3]);
+			}
+			if(opcion2.getSelectedIndex() == 4)
+			{
+				imagen2.setIcon(icono[4]);
+			}
+			if(opcion2.getSelectedIndex() == 0)
+			{
+				imagen2.setIcon(icono[0]);
+			}
+		}
+				
 	}
 	/*
 	 * el metodo stateChanged revisa que radio button presionaste
@@ -150,6 +238,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		nombre2.setVisible(true);
 		ficha2.setVisible(true);
 		opcion2.setVisible(true);
+		imagen2.setVisible(true);
 	}
 	/*
 	 * OcultarOpcionJugador2 oculta la opcion de jugador dos este metodo es llamado
@@ -161,6 +250,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		nombre2.setVisible(false);
 		ficha2.setVisible(false);
 		opcion2.setVisible(false);
+		imagen2.setVisible(false);
 	}
 	
 	/*
@@ -178,104 +268,90 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
     	else if("O" == String.valueOf(opcion1.getSelectedItem()))
     	{
     		opcion2.setModel(new DefaultComboBoxModel(new String[] {"X"}));
-    	} 
-    	
-    	
-    }
-    
-  
-    public String getNombreJugador1(){
+    	}     	    	
+    }      
+    public String getNombreJugador1()
+    {
       
     	return nombreJugador1;
     }
-    public String getNombreJugador2(){
+    public String getNombreJugador2()
+    {
     	return nombreJugador2;
+    }    
+    public String getFichaJugador1()
+    {            	  
+    	//Object e = opcion1.getSelectedItem();
+	    //String years = String.valueOf(e); 
+	    //char cad= years.charAt(0); 	     
+	    return "X";	       	          
     }
-    
-    public String getFichaJugador1(){
-        
-    	   Object e = opcion1.getSelectedItem();
-	       String years = String.valueOf(e); 
-	      // char cad= years.charAt(0); 
-	     
-	       return years;
-	       
-	      
-    
-    }
-    public String getFichaJugador2(){
-    	   Object e = opcion2.getSelectedItem();
-	       String years = String.valueOf(e); 
-	      // char cad= years.charAt(0); 
-	       
-	       return years;
-    }
-    
-    
+    public String getFichaJugador2()
+    {    	  
+    	//Object e = opcion2.getSelectedItem();
+	    //String years = String.valueOf(e); 
+	    // char cad= years.charAt(0); 	       
+	    return "O";
+    }        
     /*
      * Verifica si se lleno los datos correctamente 
      * Retorna falso si falta algun campo por llenar en la ventana y muestra mesage.
      * Retorna true si esta correctamente llenado los datos 
      * */
-	public boolean venverificarllenado() {
-		if(tipoJuego ==0){
+	public boolean venverificarllenado() 
+	{
+		if(tipoJuego ==0)
+		{
 			JOptionPane.showMessageDialog(null,"debe Seleccionar un modo de juego (vs)" );
 			return false;
-		}else
-		 {  
-			if(tipoJuego == 2 && getFichaJugador1().equals(getFichaJugador2())){
+		}
+		else
+		{  			
+			if(tipoJuego == 2 && getFichaJugador1().equals(getFichaJugador2()))
+			{
 	    		JOptionPane.showMessageDialog(null,"Se Deben escoger Diferentes Fichas" );
-	    		return false;
-	    	
+	    		return false;	    	
 	        }
 			if (tipoJuego ==1 && nombreJugador1.equals(""))
-			{
-
-     	    	
+			{     	    	
 			   JOptionPane.showMessageDialog(null,"debe llenar el campo 'nombre jugador1'" );
-			   return false;
-			
-	     	}else
+			   return false;			
+	     	}
+			else
 	     	{
-	     		if(tipoJuego ==2 && (nombreJugador1.equals("")||nombreJugador2.equals(""))){
-	     		JOptionPane.showMessageDialog(null,"debe llenar el campo 'nombre jugador 1' y 'nombre de jugadpr 2' " );
-				return false;
+	     		if(tipoJuego ==2 && (nombreJugador1.equals("")||nombreJugador2.equals("")))
+	     		{
+	     			JOptionPane.showMessageDialog(null,"debe llenar el campo 'nombre jugador 1' y 'nombre de jugadpr 2' " );
+	     			return false;
 	     	    }
-	     	 }
-			
-			
-		}
-     
-		
-		 
-	  return true;
-	
+	     	 }						
+		}     				 	  
+		return true;	
 	}
 	/*
 	 * Retorna 1: si el tipo de juego es Vs Computador
 	 * Retorna 2: si el tipo de juego es Vs Jugador 2
 	 *  */
-	public int getTipoDePartida() {
-		
+	public int getTipoDePartida() 
+	{		
 		return tipoJuego;
 	}
-	public String getNombreJugador(int turno) {
+	public String getNombreJugador(int turno) 
+	{
 		if (turno==1)
-		return getNombreJugador1();
+			return getNombreJugador1();
 		else
 			return getNombreJugador2();
 	}
-	public String getFichaJugador(int turno) {
-		if (turno==1){
-			
+	public String getFichaJugador(int turno) 
+	{
+		if (turno==1)
+		{			
 			return getFichaJugador1();
 		}
-		else{
-			
+		else
+		{			
 			return getFichaJugador2();
 		}
-    }
-    
-    
-	
+    }	
 }
