@@ -426,4 +426,3 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 		
 	}
 }
-	 

@@ -1,6 +1,8 @@
 package Modelo;
 
-public class Tablero 
+import java.io.Serializable;
+
+public class Tablero implements Serializable
 {
 	private Ficha[][] tablero; 
 	//constructor de la clase Tablero

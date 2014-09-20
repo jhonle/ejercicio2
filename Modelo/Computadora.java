@@ -1,7 +1,9 @@
 package Modelo;
 
+import java.io.Serializable;
 
-public class Computadora 
+
+public class Computadora implements Serializable
 {
    private Ficha ficha; 
 	public Computadora(Ficha ficha) 

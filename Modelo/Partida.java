@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.io.Serializable;
+
 import vista.VentanaDeJuego;
 
 /**
@@ -8,7 +10,7 @@ import vista.VentanaDeJuego;
  *  
  *   
  * */
-public class Partida {
+public class Partida implements Serializable {
     protected Tablero tablero;
     protected Jugador jugador1;
    

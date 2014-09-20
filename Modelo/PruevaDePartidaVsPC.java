@@ -6,26 +6,26 @@ import vista.VentanaDeJuego;
 
 public class PruevaDePartidaVsPC {
 	public static void main(String[] args) {
-		Partida modelo = new PartidaVsPc('X');
-		((PartidaVsPc) modelo).crearJugador("Marcelo", 'O');
+		Partida partida = new PartidaVsPc('X');
+		((PartidaVsPc) partida).crearJugador("Marcelo", 'O');
 		
 		 
-		((PartidaVsPc) modelo).realizarJugadaPc(null);
+		((PartidaVsPc) partida).realizarJugadaPc(null);
 	     int turno=2;
-	     modelo.imrprimirTablero();
+	     partida.imrprimirTablero();
    	   
-	while(modelo.getGanador()==0){ 
+	while(partida.getGanador()==0){ 
 		System.out.println("Turno de Jugador: Macelo");
 		Scanner escaner = new Scanner(System.in);
 	    int	posicion = Integer.parseInt(escaner.next());
-	    modelo.RealizarJugada(posicion);
+	    partida.RealizarJugada(posicion);
 	   // if(turno==1)turno=2;
 	   //else turno=1;
-	   ((PartidaVsPc)modelo).realizarJugadaPc(null);
-	    modelo.imrprimirTablero();	
+	   ((PartidaVsPc)partida).realizarJugadaPc(null);
+	    partida.imrprimirTablero();	
 	}
-	if (modelo.getGanador()!=3){
-	  if(modelo.getGanador()==2) System.out.println("gano Marcelo");
+	if (partida.getGanador()!=3){
+	  if(partida.getGanador()==2) System.out.println("gano Marcelo");
 	  else System.out.println("gano PC"); 	
 	  }else{
 		System.out.println("EMPATE");
