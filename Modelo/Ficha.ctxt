@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=ficha
+comment0.target=Ficha(char)
+comment1.params=ficha
+comment1.target=void\ setFicha(char)
+comment1.text=\n\ SetFicha\ es\ el\ metodo\ para\ asignar\ el\ valor\ que\ va\ tener\ la\ ficha\n
+comment2.params=
+comment2.target=char\ getFicha()
+comment2.text=\n\ GetFicha\ retirna\ el\ valor\ que\ tiene\ esa\ ficha(el\ valor\ es\ un\ char)\n
+numComments=3

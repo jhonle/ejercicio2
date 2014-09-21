@@ -5,7 +5,11 @@ import java.io.Serializable;
 
 public class Computadora implements Serializable
 {
-   private Ficha ficha; 
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
+private Ficha ficha; 
 	public Computadora(Ficha ficha) 
 	{	
 		this.ficha = ficha;

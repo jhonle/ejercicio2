@@ -47,6 +47,9 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	{
 		Object boton = e.getSource();
 
+	    
+	    
+
        
         if( tipoDeVentanaActual==1 )
         {

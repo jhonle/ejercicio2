@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=fichaComp
+comment0.target=PartidaVsPc(char)
+comment0.text=\n
+comment1.params=posicion
+comment1.target=boolean\ RealizarJugada(int)
+comment1.text=\n\ Realiza\ una\ jugada\ dada\ una\ posicion\n\ @return\ true\ si\ se\ inserto\ ficha\ correctamente\n
+comment2.params=nombre\ ficha
+comment2.target=boolean\ crearJugador(java.lang.String,\ char)
+comment2.text=\n\ Crea\ un\ nuevo\ jugador.\ \n\ solo\ crea\ 1\ jugador\ \n\ @param\ nombre\ nombre\ del\ jugador\n\ @param\ ficha\ ficha\ \ del\ jugador\n
+comment3.params=
+comment3.target=int\ getGanador()
+comment3.text=\n\ @return\ 1\=computador\n\ @return\ 2\=jugador\n\ @return\ 3\=empate\n
+comment4.params=ventanaJuego
+comment4.target=void\ realizarJugadaPc(vista.VentanaDeJuego)
+comment4.text=\n\ Realiza\ una\ jugada\ Automatica\ por\ la\ PC\n\ \ @param\ ventanaJuego\ es\ la\ ventana\ en\ donde\ ingresara\ la\ ficha\n
+numComments=5

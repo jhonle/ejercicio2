@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Controlador()
+comment0.text=\n\ Metodo\ Contructor\n
+comment1.params=
+comment1.target=void\ iniciarVista()
+comment1.text=\n\ Inicia\ LA\ Intefaz\ Grafica\n
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=boton
+comment3.target=void\ controlarV1(java.lang.Object)
+comment3.text=\n\ este\ metodo\ controla\ los\ eventos\ de\ la\ Ventana\ de\ inicio\n
+comment4.params=boton
+comment4.target=void\ controlarV2(java.lang.Object)
+comment4.text=\n\ este\ metodo\ controla\ los\ eventos\ de\ la\ Ventana\ de\ Opciones\n
+comment5.params=boton
+comment5.target=void\ controlarV3(java.lang.Object)
+comment5.text=\n\ Este\ metodo\ se\ encarga\ de\ realizar\ las\ operacion\ correspondiente\ cuando\ \n\ se\ inseta\ una\ ficha\ el\ la\ VentanaJuego\ o\ cuando\ se\ realiza\ alguna\ operacion\ \n\ dentro\ de\ esta\n
+comment6.params=
+comment6.target=void\ cambiarturno()
+comment6.text=\n\ controla\ el\ turno\ de\ los\ jugadores\n\ cuando\ el\ juego\ es\ vs\ Jugador\ 2\n
+comment7.params=
+comment7.target=void\ iniciarPartida()
+comment7.text=\n\nInicia\ Una\ Nueva\ Partida\n
+numComments=8

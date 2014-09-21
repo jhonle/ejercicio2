@@ -4,8 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BaseDeDato implements Serializable {
+public class BaseDeDato implements Serializable 
+{
 	
+	/**
+	 * es la version de la clase serializada
+	 */
+	private static final long serialVersionUID = 1L;
 	HashMap<String,Partida> listaDePartidas;
    
 	

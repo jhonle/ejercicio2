@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 public class Ficha implements Serializable
 {
-   private char ficha;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
+private char ficha;
 	public Ficha(char ficha) 
 	{		
 		this.ficha = ficha;

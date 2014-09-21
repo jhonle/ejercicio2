@@ -11,8 +11,8 @@ import javax.swing.border.EmptyBorder;
 
 import Modelo.Ficha;
 import Modelo.Jugador;
+import Modelo.Partida;
 import Modelo.Tablero;
-
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
 
 public class VentanaDeJuego extends JFrame {
@@ -157,4 +159,40 @@ public class VentanaDeJuego extends JFrame {
 	    if(numboton==9)b9.setLabel(Character.toString(ficha.getFicha()));
 	    
 	}
+
+
+
+public void llenarCasillas(Partida partida) {
+	 int cont=0;
+	    Ficha[][] tabla = partida.getTablero();
+	   
+	    for(int fila=0; fila<3;fila++)
+	   	{
+	   		for(int columna=0;columna<3;columna++)
+	   		{
+	   			
+	   			if(tabla[fila][columna].getFicha()!='t'){
+	   		     modificarBoton(fila,columna,tabla[fila][columna].getFicha());
+	   			
+	   			}
+	   			  
+	   			
+	   	     }
+	   	}
+	
+}
+
+
+
+private void modificarBoton(int fila, int columna, char ficha) {
+	if(fila==0&&columna==0) b1.setLabel(Character.toString(ficha));
+	if(fila==0&&columna==1) b2.setLabel(Character.toString(ficha));
+	if(fila==0&&columna==2) b3.setLabel(Character.toString(ficha));
+	if(fila==1&&columna==0) b4.setLabel(Character.toString(ficha)); 
+	if(fila==1&&columna==1) b5.setLabel(Character.toString(ficha));
+	if(fila==1&&columna==2) b6.setLabel(Character.toString(ficha));
+	if(fila==2&&columna==0) b7.setLabel(Character.toString(ficha));
+	if(fila==2&&columna==1) b8.setLabel(Character.toString(ficha));
+	if(fila==1&&columna==2) b9.setLabel(Character.toString(ficha));
+}
 }

@@ -11,7 +11,11 @@ import vista.VentanaDeJuego;
  *   
  * */
 public class Partida implements Serializable {
-    protected Tablero tablero;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
+	protected Tablero tablero;
     protected Jugador jugador1;
    
     protected int contador;
@@ -69,6 +73,11 @@ public class Partida implements Serializable {
 		   	     }
 		   	}
 
+	}
+
+	public Ficha[][] getTablero() {
+		
+		return tablero.getTablero();
 	}
 
 	

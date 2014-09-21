@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=nom\ fic
+comment0.target=Jugador(java.lang.String,\ Ficha)
+comment0.text=Constructor\ de\ la\ clase\ Jugador
+comment1.params=
+comment1.target=java.lang.String\ getNombreJugador()
+comment1.text=Metodo\ que\ retorna\ el\ nombre\ del\ jugador
+comment2.params=
+comment2.target=Ficha\ getFichaJugador()
+comment2.text=Metodo\ que\ retorna\ la\ ficha\ del\ jugador
+numComments=3

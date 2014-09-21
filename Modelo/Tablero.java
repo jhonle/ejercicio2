@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Tablero implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4L;
 	private Ficha[][] tablero; 
 	//constructor de la clase Tablero
 	public Tablero()
