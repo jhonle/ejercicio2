@@ -1,7 +1,13 @@
 package Modelo;
 
-public class Tablero 
+import java.io.Serializable;
+
+public class Tablero implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
 	private Ficha[][] tablero; 
 	//constructor de la clase Tablero
 	public Tablero()

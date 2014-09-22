@@ -5,8 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BaseDeDato implements Serializable 
+
 {	
-	HashMap<String,Partida> listaDePartidas;	
+
+	/**
+	 * es la version de la clase serializada
+	 */
+	private static final long serialVersionUID = 6L;
+    HashMap<String,Partida> listaDePartidas;	
 	
 	public BaseDeDato() 
 	{		
@@ -32,4 +38,6 @@ public class BaseDeDato implements Serializable
 	{		
 		return  listaDePartidas.get(descripcion);	
 	}
+
+
 }
