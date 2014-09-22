@@ -52,7 +52,7 @@ if (partida.getGanador()!=3){
 	BaseDeDato datos = new BaseDeDato();
     Serializador ser= new Serializador();
     datos = (BaseDeDato)ser.leerObjeto("Datos.a"); 
-    Partida  partida = datos.getPartida("partida2");
+    Partida  partida = datos.getPartida("partida4");
     partida.imrprimirTablero();
     VentanaDeJuego  v = new VentanaDeJuego();
     v.llenarCasillas(partida);
