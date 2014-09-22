@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class Ficha implements Serializable
 {
-
-   
-    private static final long serialVersionUID = 6L;
-    private char ficha;
-    private String figura;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
+private char ficha;
+   private String figura;
 	public Ficha(char ficha,String fig) 
-
 	{		
 		this.ficha = ficha;
 		this.figura=fig;

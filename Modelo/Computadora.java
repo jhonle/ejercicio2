@@ -1,17 +1,14 @@
 package Modelo;
 
-
 import java.io.Serializable;
 
-
 public class Computadora implements Serializable
-{
-   /**
-	 * version para la serializacion
+{   
+	/**
+	 * 
 	 */
 	private static final long serialVersionUID = 6L;
-    private Ficha ficha; 
-
+	private Ficha ficha;
 	public Computadora(Ficha ficha) 
 	{	
 		this.ficha = ficha;

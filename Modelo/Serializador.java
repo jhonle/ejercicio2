@@ -17,7 +17,7 @@ public class Serializador
 	private ObjectInputStream lectorDeObjeto;
 	private ObjectOutputStream escritorDeObjeto;			
 	/**
-	 * Guarda un Objeto en un archivo
+	 * Guarda un Obejto en un archivo
 	 * @param objeto  obejeto que se desea guardar en el archivo
 	 * @param nombreDelArchivo nombre del archivo en el que se desea guardar al objeto
 	 * */
@@ -25,7 +25,7 @@ public class Serializador
 	{
 		try 
 		{
-			escritorDeObjeto=new ObjectOutputStream(new FileOutputStream(nombreDelArchivo,true));
+			escritorDeObjeto=new ObjectOutputStream(new FileOutputStream(nombreDelArchivo));
 			escritorDeObjeto.writeObject(objeto);
 			escritorDeObjeto.close();
 		}

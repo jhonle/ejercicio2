@@ -16,18 +16,17 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
-public class VentanaDeIngreso extends JFrame {
-
+public class VentanaDeIngreso extends JFrame 
+{
 	private JPanel contentPane;
-	public JButton btnIniciarPartida;
+	public JButton btnIniciarPartida;	
 	public JButton btnCargarPartida;
-
-	
 
 	/**
 	 * Create the frame.
 	 */
-	public VentanaDeIngreso() {
+	public VentanaDeIngreso() 
+	{		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		this.setTitle("BIENBENIDO");
@@ -44,6 +43,7 @@ public class VentanaDeIngreso extends JFrame {
 		contentPane.add(btnIniciarPartida);
 		
 		btnCargarPartida = new JButton("CARGAR PARTIDA");
+		btnCargarPartida.setEnabled(false);
 		btnCargarPartida.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 		
 		btnCargarPartida.setBounds(225, 138, 187, 35);
@@ -52,25 +52,20 @@ public class VentanaDeIngreso extends JFrame {
 		JButton btnJugarEnLan = new JButton("JUGAR EN LAN");
 		btnJugarEnLan.setEnabled(false);
 		btnJugarEnLan.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
-		btnJugarEnLan.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//public class inicio extends JFrame {
-					//public inicio() {
-					//super("T�tulo de la ventana");
-					//p = getContentPane();
-					//setLayout(new FlowLayout());
-					//setSize(200, 100);
-					setVisible(true);
-					setDefaultCloseOperation(EXIT_ON_CLOSE);
-					Object[] textoOpciones={"Si adelante","Ahora no","cancelar"};
-					//s�"};
-					int opcion = JOptionPane.showOptionDialog(null,
-					"�Desea continuar?", "mensaje",
-					JOptionPane.YES_NO_CANCEL_OPTION,
-					JOptionPane.QUESTION_MESSAGE, null, textoOpciones,
-					textoOpciones[0]);
-					}
-			//}
+		btnJugarEnLan.addActionListener(new ActionListener() 
+		{			
+			public void actionPerformed(ActionEvent arg0) 
+			{									
+				setVisible(true);
+				setDefaultCloseOperation(EXIT_ON_CLOSE);
+				Object[] textoOpciones={"Si adelante","Ahora no","cancelar"};
+				
+				int opcion = JOptionPane.showOptionDialog(null,
+				"�Desea continuar?", "mensaje",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE, null, textoOpciones,
+				textoOpciones[0]);					
+			}							
 		});
 		btnJugarEnLan.setBounds(225, 194, 187, 41);
 		contentPane.add(btnJugarEnLan);
@@ -82,7 +77,7 @@ public class VentanaDeIngreso extends JFrame {
 		contentPane.add(lblTresEnRaya);
 		
 		JLabel lblImg = new JLabel("img");
-		lblImg.setIcon(new ImageIcon(VentanaDeIngreso.class.getResource("/vista/tres_en_raya.jpg")));
+		//lblImg.setIcon(new ImageIcon(VentanaDeIngreso.class.getResource("/vista/tres_en_raya.jpg")));
 		lblImg.setBounds(12, 67, 187, 168);
 		contentPane.add(lblImg);
 	}

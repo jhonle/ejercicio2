@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import Controlador.Serializador;
+import Modelo.Serializador;
 import Modelo.BaseDeDato;
 import Modelo.Partida;
 
