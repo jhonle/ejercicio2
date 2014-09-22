@@ -1,4 +1,4 @@
-package vista;
+package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

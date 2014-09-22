@@ -3,8 +3,8 @@ package Modelo;
 import java.awt.font.NumericShaper;
 import java.util.Scanner;
 
-import vista.VentanaDeJuego;
-import vista.VentanaDeOpciones;
+import Vista.VentanaDeJuego;
+import Vista.VentanaDeOpciones;
 
 public class PartidaVsPc extends Partida
 {

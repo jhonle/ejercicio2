@@ -1,17 +1,17 @@
-package controlador;
+package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import vista.DialogoGuardar;
-import vista.VentanaDeIngreso;
-import vista.VentanaDeJuego;
-import vista.VentanaDeOpciones;
 import Modelo.Partida;
 import Modelo.PartidaVsJugador2;
 import Modelo.PartidaVsPc;
+import Vista.DialogoGuardar;
+import Vista.VentanaDeIngreso;
+import Vista.VentanaDeJuego;
+import Vista.VentanaDeOpciones;
 
 public class Controlador implements ActionListener {
 

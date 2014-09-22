@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Scanner;
 
-import vista.VentanaDeJuego;
+import Vista.VentanaDeJuego;
 
 public class PruevaDePartidaVsPC {
 	public static void main(String[] args) {

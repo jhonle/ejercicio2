@@ -1,11 +1,11 @@
-package controlador;
+package Controlador;
 
 import java.util.Scanner;
 
-import vista.VentanaDeJuego;
 import Modelo.BaseDeDato;
 import Modelo.Partida;
 import Modelo.PartidaVsPc;
+import Vista.VentanaDeJuego;
 
 public class Prueba_Guerdar_recuperar {
 public static void main(String []args)

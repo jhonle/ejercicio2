@@ -2,7 +2,7 @@ package Modelo;
 
 import java.io.Serializable;
 
-import vista.VentanaDeJuego;
+import Vista.VentanaDeJuego;
 
 /**
  * 

@@ -2,7 +2,7 @@ package Modelo;
 
 import javax.swing.JFrame;
 
-import vista.VentanaDeJuego;
+import Vista.VentanaDeJuego;
 
 public class PartidaVsJugador2 extends Partida
 {

@@ -1,8 +1,8 @@
-package controlador;
+package Controlador;
 
-import vista.VentanaDeIngreso;
-import vista.VentanaDeJuego;
 import Modelo.PartidaVsJugador2;
+import Vista.VentanaDeIngreso;
+import Vista.VentanaDeJuego;
 
 public class Main {
 	
