@@ -1,0 +1,40 @@
+!SESSION 2014-09-20 10:39:24.137 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2014-09-20 10:41:21.648
+!MESSAGE Invalid preference page path: Logging
+!SESSION 2014-09-20 10:41:24.721 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2014-09-20 10:44:17.694
+!MESSAGE Invalid preference page path: Logging
+!SESSION 2014-09-21 16:50:35.356 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2014-09-21 16:53:58.527
+!MESSAGE Invalid preference page path: Logging
+!SESSION 2014-09-21 16:53:58.643 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2014-09-21 16:54:30.085
+!MESSAGE Invalid preference page path: Logging
