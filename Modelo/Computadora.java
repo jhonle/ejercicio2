@@ -1,9 +1,8 @@
 package Modelo;
 
-
 public class Computadora 
-{
-   private Ficha ficha; 
+{   
+	private Ficha ficha;
 	public Computadora(Ficha ficha) 
 	{	
 		this.ficha = ficha;
@@ -19,7 +18,8 @@ public class Computadora
 	/**
 	 * @return Ficha de la computadora
 	 * */
-	public Ficha getFicha() {
+	public Ficha getFicha() 
+	{
 		return ficha;
-	}	
+	}
 }

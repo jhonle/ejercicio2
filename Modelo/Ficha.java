@@ -3,9 +3,11 @@ package Modelo;
 public class Ficha 
 {
    private char ficha;
-	public Ficha(char ficha) 
+   private String figura;
+	public Ficha(char ficha,String fig) 
 	{		
 		this.ficha = ficha;
+		this.figura=fig;
 	}
 	/**
 	 * SetFicha es el metodo para asignar el valor que va tener la ficha
@@ -15,10 +17,14 @@ public class Ficha
     	this.ficha = ficha;
     }
     /**
-     * GetFicha retirna el valor que tiene esa ficha(el valor es un char)
+     * GetFicha retorna el valor que tiene esa ficha(el valor es un char)
      */
     public char getFicha()
     {
     	return ficha;
+    }
+    public String getFigura()
+    {
+    	return figura;
     }
 }

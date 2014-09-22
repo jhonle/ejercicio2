@@ -16,7 +16,7 @@ public class Tablero
         {
             for(int j=0;j<tablero[i].length;j++)
              {
-                 tablero[i][j]=new Ficha('-');
+                 tablero[i][j]=new Ficha('-',"");
              }
         }
     }  

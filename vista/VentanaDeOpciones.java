@@ -1,4 +1,4 @@
-package vista;
+package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +33,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	private ButtonGroup grupo;
 	private String nombreJugador1;
 	private String nombreJugador2;
-	private int tipoJuego;   // 0 si no se selecciono ningun vs. 1 si se selecciono vs computador. Y 2 si se selecciono jugador 2
+	private int tipoJuego;// 0 si no se selecciono ningun vs. 1 si se selecciono vs computador. Y 2 si se selecciono jugador 2
 	private String img[] = {"Ficha1","Ficha2","Ficha3","Ficha4"};
 	private String img2[] = {"Ficha2","Ficha3","Ficha4"};
 	/**Vector que contiene los iconos de las fichas
@@ -75,17 +75,17 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 			new ImageIcon(getClass().getResource("/imagenes/Homero.png")),
 			new ImageIcon(getClass().getResource("/imagenes/Maggie.png"))
 	};
-	/*Costructor de la clase VentanaDeOpciones*/
+	
 	public  VentanaDeOpciones() 
-	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	{			
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	  
 		setSize(400,400);
 		setLocation(200,100);
 		getContentPane().setLayout(null);
 		setTitle("OPCIONES DE PARTIDA");
 		CargarPantalla();
 	}
-	/*
+	/**
 	 *  CargarPantalla: este metodo carga la pantalla inicial del juego 
 	 */
 	private void CargarPantalla()
@@ -107,11 +107,11 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	    imagen = new JLabel(" ");
 	    imagen.setBounds(290, 40, 100, 80);
 	    panel.add(imagen);
-	    
+		
 	    opcion1 =new JComboBox(img);
 	    imagen.setIcon(icono[0]);
 	    opcion1.setBounds(173,61,100,30);
-	    panel.add(opcion1);	    	   
+	    panel.add(opcion1);
 			    
 		JLabel vs = new JLabel("Jugar vs");
 		vs.setBounds(155,115,110,25);	
@@ -150,7 +150,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	    opcion2.setBounds(173,254,100,30);
 	    opcion2.setVisible(false);
 	    panel.add(opcion2);
-	    		
+		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(228, 307,100,25);
 		panel.add(btnAceptar);		
@@ -302,7 +302,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 			tipoJuego =2;
 			nombreJugador1= nombre1.getText();
 			nombreJugador2= nombre2.getText();
-			OpcionJugador2();						
+			OpcionJugador2();
 		}		
 	}
 	/*
@@ -332,8 +332,8 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	
 	/*
 	 * actionPerformed este metodo es para revisar que ficha selecciono el jugador1
-	 * para que el jugador2 no pueda usar la misma ficha(figura)
-	 * y tambien para darle funcion aceptar que es la que hace que empieze el juego
+	 * para que el jugador2 no pueda usar la misma ficha
+	 * y tambien para darl funcion aceptar que es la que hae que empieze el juego
 	 * 
 	 */
     public void actionPerformed(ActionEvent e)
@@ -357,11 +357,10 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
     	{
     		opcion2.setModel(new DefaultComboBoxModel(new String[] {"Ficha1","Ficha2","Ficha3"}));
     		imagen2.setIcon(icono4[0]);
-    	}
+    	}     	    	
     }      
     public String getNombreJugador1()
-    {
-      
+    {     
     	return nombreJugador1;
     }
     public String getNombreJugador2()
@@ -369,47 +368,42 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
     	return nombreJugador2;
     }    
     public String getFichaJugador1()
-    {            	      	 	     
-	    return "X";	       	          
+    {            	       	 	     
+    	return "X";	       	          
     }
     public String getFichaJugador2()
-    {    	   	       
-	    return "O";
+    {    	       	 	     
+    	return "O";
     }        
     /*
      * Verifica si se lleno los datos correctamente 
-     * Retorna falso si falta algun campo por llenar en la ventana y muestra mesage.
+     * Retorna falso si falta algun campo por llenar en la ventana y muestra mensaje.
      * Retorna true si esta correctamente llenado los datos 
      * */
 	public boolean venverificarllenado() 
-	{
+	{		
 		if(tipoJuego ==0)
 		{
-			JOptionPane.showMessageDialog(null,"debe Seleccionar un modo de juego (vs)" );
+			JOptionPane.showMessageDialog(null,"Debe Seleccionar un modo de juego (vs)" );
 			return false;
 		}
-		else
-		{  			
-			if(tipoJuego == 2 && getFichaJugador1().equals(getFichaJugador2()))
-			{
-	    		JOptionPane.showMessageDialog(null,"Se Deben escoger Diferentes Fichas" );
-	    		return false;	    	
-	        }
-			if (tipoJuego ==1 && nombreJugador1.equals(""))
+		else		 
+		{  						
+			if (tipoJuego ==1 && (nombreJugador1.equals(" ")))
 			{     	    	
-			   JOptionPane.showMessageDialog(null,"debe llenar el campo 'nombre jugador1'" );
+			   JOptionPane.showMessageDialog(null,"Debe llenar el campo 'nombre jugador1'" );
 			   return false;			
 	     	}
 			else
 	     	{
 	     		if(tipoJuego ==2 && (nombreJugador1.equals("")||nombreJugador2.equals("")))
-	     		{
-	     			JOptionPane.showMessageDialog(null,"debe llenar el campo 'nombre jugador 1' y 'nombre de jugadpr 2' " );
+	     		{	     		
+	     			JOptionPane.showMessageDialog(null,"Debe llenar el campo 'nombre jugador 1' y 'nombre de jugador 2' " );
 	     			return false;
-	     	    }
-	     	 }						
-		}     				 	  
-		return true;	
+	     	    }	     	 
+	     	}						
+		}     				 	 
+		return true;		
 	}
 	/*
 	 * Retorna 1: si el tipo de juego es Vs Computador
@@ -422,8 +416,10 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	public String getNombreJugador(int turno) 
 	{
 		if (turno==1)
+		
 			return getNombreJugador1();
 		else
+			
 			return getNombreJugador2();
 	}
 	public String getFichaJugador(int turno) 
@@ -433,8 +429,46 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 			return getFichaJugador1();
 		}
 		else
-		{			
+		{		
 			return getFichaJugador2();
 		}
-    }	
+    }
+	/*Retorna la opcion de la ficha(figura)del JComboBox(opcion1-opcion2)
+	 * que el jugador eligio
+	 * */
+	public String getFigura(int turnojug) 
+	{
+		String opcionFicha="";
+		if(turnojug==1)
+		{
+			opcionFicha=opcion1.getSelectedItem().toString();			
+		}
+		else
+		{
+			opcionFicha=opcion2.getSelectedItem().toString();
+		}
+		return opcionFicha;
+	}
+	
+	public String getFiguraPC()
+	{
+		String figura="";
+		if(opcion1.getSelectedItem().toString()=="Ficha1")
+		{
+			figura="Ficha2";
+		}
+		if(opcion1.getSelectedItem().toString()=="Ficha2")
+		{
+			figura="Ficha3";
+		}
+		if(opcion1.getSelectedItem().toString()=="Ficha3")
+		{
+			figura="Ficha4";
+		}
+		if(opcion1.getSelectedItem().toString()=="Ficha4")
+		{
+			figura="Ficha1";
+		}
+		return figura;
+	}
 }

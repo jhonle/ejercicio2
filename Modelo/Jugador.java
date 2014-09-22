@@ -8,7 +8,7 @@ public class Jugador
 	public Jugador(String nom,Ficha fic)
 	{
 		nombre=nom;
-		ficha=fic;
+		ficha=fic;		
 	}
 	/**Metodo que retorna el nombre del jugador*/
 	public String getNombreJugador()
@@ -19,5 +19,5 @@ public class Jugador
 	public Ficha getFichaJugador()
 	{
 		return ficha;
-	}
+	}	
 }

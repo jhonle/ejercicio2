@@ -107,6 +107,13 @@ public class Controlador implements ActionListener
         }		
 		else
         {  			
+			if(boton== this.ventanaJuego.menu_GuardarP)
+			{
+				BaseDeDato datos = new BaseDeDato();
+				Serializador ser= new Serializador();
+				datos = (BaseDeDato)ser.leerObjeto("Datos.d");
+				
+			}
 			if( boton == this.ventanaJuego.menu_Reiniciar)         
 			{      	    
 				int ax = JOptionPane.showConfirmDialog(null, "Se perderan todos los datos de la partida actual");
