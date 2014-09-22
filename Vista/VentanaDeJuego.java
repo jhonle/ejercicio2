@@ -1,4 +1,4 @@
-package vista;
+package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -29,10 +29,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-
 public class VentanaDeJuego extends JFrame 
 {
-	private static JPanel contentPane;	
+	private static JPanel contentPane;		
 	public JButton b1;
 	public JButton b2;
 	public JButton b3;
@@ -50,7 +49,8 @@ public class VentanaDeJuego extends JFrame
 	private JMenu mnAyuda;
 	private JMenuItem mntmSalir;
 	private JPanel panel;
-	public JLabel lblMsg;
+	public JLabel lblMsg;	
+	public JMenuItem menu_GuardarPartida;
 	private ImageIcon cursorImg;    
     private Cursor cursor;
 	/**
@@ -63,12 +63,12 @@ public class VentanaDeJuego extends JFrame
 		setResizable(false);
 		setBackground(Color.GRAY);
 	    getContentPane().setLayout(null);
-		
-		panel = new JPanel();
-		panel.setBounds(0, 26, 294, 266);
+					
+	    panel = new JPanel();
+	    panel.setBounds(0, 26, 294, 266);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
-									
+										   
 		b1 = new JButton("");
 		b1.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 32));
 		panel.add(b1);
@@ -117,12 +117,17 @@ public class VentanaDeJuego extends JFrame
 			
 		mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() 
-		{				
+		{
 			public void actionPerformed(ActionEvent arg0) 
-			{
+			{					
 				System.exit(0);
-			}
+			}		
 		});
+			
+		menu_GuardarPartida = new JMenuItem("Guardar Partida");
+		mnMenu.add(menu_GuardarPartida);
+		mnMenu.add(mntmSalir);
+		
 		mnMenu.add(mntmSalir);
 			
 		mnAyuda = new JMenu("AYUDA");
@@ -130,29 +135,31 @@ public class VentanaDeJuego extends JFrame
 			
 		mntmAyuda = new JMenuItem("About");
 		mntmAyuda.addActionListener(new ActionListener() 
-		{
+		{				
 			public void actionPerformed(ActionEvent e) 
-			{
+			{					
 				JOptionPane.showMessageDialog(null,"desarrollado por Grupo: 'UBUNTU' " );
+			    
 			}			
-		});	
+		});		
 		mnAyuda.add(mntmAyuda);	
-		
+	
+	
 		cursorImg = new ImageIcon("Cursores/cursor1.png");
 		Toolkit TK = Toolkit.getDefaultToolkit();		 
         cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
         setCursor(cursor);
+	
 	}
-	/**
-	 * @param numboton  numero de boton que se quiere cambiar su texto(label)
-	 * @param ficha  Ficha que contiene el Texto para modifical dicho boton               
-	 * @return void
-	 * */	
+
+/**
+ * @param numboton  numero de boton que se quiere cambiar su texto(label)
+ * @param ficha  Ficha que contiene el Texto para modifical dicho boton               
+ * @return void
+ * */
 	public void marcarBoton(int numboton, Ficha ficha) 
-	{
-	    //if(numboton==1)b1.setLabel(Character.toString(ficha.getFicha()));
-	    if(numboton==1)
-	    	b1.setLabel(Character.toString(ficha.getFicha()));
+	{	    
+		if(numboton==1)b1.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==2)b2.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==3)b3.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==4)b4.setLabel(Character.toString(ficha.getFicha()));
@@ -160,7 +167,6 @@ public class VentanaDeJuego extends JFrame
 	    if(numboton==6)b6.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==7)b7.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==8)b8.setLabel(Character.toString(ficha.getFicha()));
-	    if(numboton==9)b9.setLabel(Character.toString(ficha.getFicha()));
-	    
+	    if(numboton==9)b9.setLabel(Character.toString(ficha.getFicha()));	   
 	}
 }

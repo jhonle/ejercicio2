@@ -33,7 +33,7 @@ public class Controlador implements ActionListener
 	{	      
 		ventanaIngreso.setLocationRelativeTo(null);
 	    this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
-	    this.ventanaIngreso.btnCargarPartida.addActionListener(this);
+	 
 	    ventanaIngreso.setVisible(true);
 	    tipoDeVentanaActual=1;	        	
 	}
@@ -662,7 +662,7 @@ public class Controlador implements ActionListener
  	     
  	    this.ventanaJuego.menu_volverAtras.addActionListener(this);
  	    this.ventanaJuego.menu_Reiniciar.addActionListener(this);	
- 	    this.ventanaIngreso.btnCargarPartida.addActionListener(this);
+ 	   
  	    this.ventanaJuego.menu_GuardarPartida.addActionListener(this);
  	  
  	    if(ventanaOpciones.getTipoDePartida()==2)//caso jugador1 vs jugador2 	   
