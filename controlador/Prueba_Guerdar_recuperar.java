@@ -10,7 +10,7 @@ import Modelo.PartidaVsPc;
 public class Prueba_Guerdar_recuperar {
 public static void main(String []args)
 {
-	/*
+	
 	Partida partida = new PartidaVsPc('X');
 	((PartidaVsPc) partida).crearJugador("Marcelo", 'O');
 	
@@ -32,10 +32,10 @@ while(partida.getGanador()==0){
     	BaseDeDato datos = new BaseDeDato();
 	    Serializador ser= new Serializador();
 	   datos.addPartida("prueba1", partida);
-	    //ser.escribirObjeto(datos,"Datos.a");
-	    //datos = (BaseDeDato)ser.leerObjeto("Datos.a"); 
-        partida = datos.getPartida("prueba1");
-        partida.imrprimirTablero();
+	    ser.escribirObjeto(datos,"Datos.a");
+	    datos = (BaseDeDato)ser.leerObjeto("Datos.a"); 
+        //partida = datos.getPartida("prueba1");
+        //partida.imrprimirTablero();
         System.out.println("Se recupero la partida con: "+datos.getPartida("prueba1"));
     }
   
@@ -48,15 +48,15 @@ if (partida.getGanador()!=3){
 }
 
    
-	*/
-	BaseDeDato datos = new BaseDeDato();
+	
+	/*BaseDeDato datos = new BaseDeDato();
     Serializador ser= new Serializador();
     datos = (BaseDeDato)ser.leerObjeto("Datos.a"); 
     Partida  partida = datos.getPartida("partida2");
     partida.imrprimirTablero();
     VentanaDeJuego  v = new VentanaDeJuego();
     v.llenarCasillas(partida);
-    v.setVisible(true);
+    v.setVisible(true);*/
 
 
 }
