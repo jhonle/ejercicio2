@@ -20,6 +20,7 @@ public class VentanaDeIngreso extends JFrame {
 
 	private JPanel contentPane;
 	public JButton btnIniciarPartida;
+	public JButton btnCargarPartida;
 
 	
 
@@ -42,8 +43,7 @@ public class VentanaDeIngreso extends JFrame {
 		btnIniciarPartida.setBounds(225, 74, 187, 41);
 		contentPane.add(btnIniciarPartida);
 		
-		JButton btnCargarPartida = new JButton("CARGAR PARTIDA");
-		btnCargarPartida.setEnabled(false);
+		btnCargarPartida = new JButton("CARGAR PARTIDA");
 		btnCargarPartida.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 		
 		btnCargarPartida.setBounds(225, 138, 187, 35);

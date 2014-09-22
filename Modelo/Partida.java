@@ -14,7 +14,7 @@ public class Partida implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 6L;
 	protected Tablero tablero;
     protected Jugador jugador1;
    

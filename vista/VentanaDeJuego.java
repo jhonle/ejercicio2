@@ -52,6 +52,7 @@ public class VentanaDeJuego extends JFrame {
 	private JMenuItem mntmSalir;
 	private JPanel panel;
 	public JLabel lblMsg;
+	public JMenuItem menu_GuardarPartida;
 	
 
 	
@@ -125,6 +126,9 @@ public class VentanaDeJuego extends JFrame {
 					System.exit(0);
 				}
 			});
+			
+			menu_GuardarPartida = new JMenuItem("Guardar Partida");
+			mnMenu.add(menu_GuardarPartida);
 			mnMenu.add(mntmSalir);
 			
 			mnAyuda = new JMenu("AYUDA");

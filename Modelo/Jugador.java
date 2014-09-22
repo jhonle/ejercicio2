@@ -8,7 +8,7 @@ public class Jugador implements Serializable
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5L;
+	private static final long serialVersionUID = 6L;
 	private Ficha ficha;
 	private String nombre;
 	/*Constructor de la clase Jugador*/

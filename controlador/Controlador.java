@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import vista.DialogoGuardar;
 import vista.VentanaDeIngreso;
 import vista.VentanaDeJuego;
 import vista.VentanaDeOpciones;
@@ -21,9 +22,12 @@ private Partida           partida;
 private String            tituloVentana = "";
 private int turno=1; //es para controlar que turno preciono el boton
 
-private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego
+private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego; 4 Ventana GargarPartida
  /**
-  * Metodo Contructor
+  * Metodo ContructorJuego    ventanaJuego;
+private Partida           partida;
+private String            tituloVentana = "";
+private int turno=1; //es para controlar que turno preciono el boton
   * */	
   public Controlador() {
 		ventanaIngreso = new VentanaDeIngreso();
@@ -37,6 +41,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	public void iniciarVista() {
 	      ventanaIngreso.setLocationRelativeTo(null);
 	      this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
+	      this.ventanaIngreso.btnCargarPartida.addActionListener(this);
 	      ventanaIngreso.setVisible(true);
 	      tipoDeVentanaActual =1;
 	        
@@ -83,7 +88,12 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 		    ventanaOpciones = new VentanaDeOpciones();
 		    ventanaOpciones.setVisible(true);
 		    this.ventanaOpciones.btnAceptar.addActionListener(this);
-		    
+		}else{
+			 if(boton == this.ventanaIngreso.btnCargarPartida){
+				
+				
+			}
+			
 		}  
 		
 		
@@ -121,7 +131,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
       * */
 	private void controlarV3(Object boton) 
 	{
-	 
+	    
 		if( boton == this.ventanaJuego.menu_volverAtras)
          {
       	    int ax = JOptionPane.showConfirmDialog(null, "Se perderan todos los datos de la partida actual");
@@ -149,10 +159,17 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
                    
                 
             }
-         }else{
-        	if( partida.getGanador()==0)
+         }else
+         {
+        	 if(boton == this.ventanaJuego.menu_GuardarPartida){
+              
+        		 new DialogoGuardar(partida,ventanaJuego).setVisible(true);
+        	     ventanaJuego.setVisible(false);																			
+         
+        }else{
+        	 if( partida.getGanador()==0)
         	{
-        	    boolean bandera = true;
+        	    boolean bandera = true;						
         		if(boton == ventanaJuego.b1)
         	    {
         		    boolean estado= partida.RealizarJugada(1);
@@ -340,6 +357,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
 	        }
 
           }
+        }
        }
 }
 
@@ -378,6 +396,7 @@ private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 
  	     
  	     this.ventanaJuego.menu_volverAtras.addActionListener(this);
  	     this.ventanaJuego.menu_Reiniciar.addActionListener(this);	
+ 	    this.ventanaJuego.menu_GuardarPartida.addActionListener(this);
 	          
  	   if(ventanaOpciones.getTipoDePartida()==2)
  	   {

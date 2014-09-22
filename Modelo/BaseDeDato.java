@@ -10,7 +10,7 @@ public class BaseDeDato implements Serializable
 	/**
 	 * es la version de la clase serializada
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6L;
 	HashMap<String,Partida> listaDePartidas;
    
 	
@@ -38,7 +38,7 @@ public class BaseDeDato implements Serializable
 	}
 	
 	public Partida getPartida(String descripcion){
-		
+
 		return  listaDePartidas.get(descripcion);
 	
 	}

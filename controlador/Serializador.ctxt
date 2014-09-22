@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=objeto\ nombreDelArchivo
-comment0.target=void\ escribirObjeto(java.lang.Object,\ java.lang.String)
-comment0.text=\n\ Guarda\ un\ Obejto\ en\ un\ archivo\n\ @param\ objeto\ \ obejeto\ que\ se\ desea\ guardar\ en\ el\ archivo\n\ @param\ nombreDelArchivo\ nombre\ del\ archivo\ en\ el\ que\ se\ desea\ guardar\ al\ objeto\n
-comment1.params=nombreArchivo
-comment1.target=java.lang.Object\ leerObjeto(java.lang.String)
-comment1.text=\n\ Recupera\ el\ objeto\ guardado\ en\ un\ archivo\n\ @param\ \ nombreArchivo\ nombre\ del\ archivo\ que\ contenga\ el\ Objeto\ guardado\n\ @return\ Objeto\ que\ se\ guardo\ en\ el\ archivo\n
-numComments=2
