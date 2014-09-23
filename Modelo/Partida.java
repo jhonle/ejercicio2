@@ -1,12 +1,27 @@
 package Modelo;
 
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+
+import vista.VentanaDeJuego;
+
+>>>>>>> rama-marcelo
 /**
  *generaliza los tipos de jugada: Vs PC, Vs Jugador2, LAN etc  
  * */
+<<<<<<< HEAD
 public class Partida implements Serializable 
 {
     protected Tablero tablero;
+=======
+public class Partida implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
+	protected Tablero tablero;
+>>>>>>> rama-marcelo
     protected Jugador jugador1;
     protected Jugador jugador2;
     protected Computadora pc;
@@ -129,6 +144,7 @@ public class Partida implements Serializable
 			}		   	
 		}
 	}
+<<<<<<< HEAD
     /**
 	  * Crea un nuevo jugador.  
 	  * @param nombre nombre del jugador
@@ -207,4 +223,16 @@ public class Partida implements Serializable
 	 {
 		 return pc.getFicha().getFigura();
 	 }
+=======
+
+	public Ficha[][] getTablero() {
+		
+		return tablero.getTablero();
+	}
+
+	
+
+	
+
+>>>>>>> rama-marcelo
 }
