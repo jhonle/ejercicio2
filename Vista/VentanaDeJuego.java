@@ -145,7 +145,7 @@ public class VentanaDeJuego extends JFrame
 		mnAyuda.add(mntmAyuda);	
 	
 	
-		cursorImg = new ImageIcon("Cursores/cursor1.png");
+		cursorImg = new ImageIcon(getClass().getResource("/Cursores/cursor1.png"));
 		Toolkit TK = Toolkit.getDefaultToolkit();		 
         cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
         setCursor(cursor);

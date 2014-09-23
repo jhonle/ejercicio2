@@ -181,7 +181,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		opcion1.addItemListener(this);
 		opcion2.addItemListener(this);
 	
-		cursorImg = new ImageIcon("Cursores/cursor1.png");
+		cursorImg = new ImageIcon(getClass().getResource("/Cursores/cursor1.png"));
 		Toolkit TK = Toolkit.getDefaultToolkit();		 
         cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
         setCursor(cursor);

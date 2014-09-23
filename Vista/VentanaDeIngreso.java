@@ -77,7 +77,7 @@ public class VentanaDeIngreso extends JFrame
 		lblImg.setBounds(12, 67, 187, 168);
 		contentPane.add(lblImg);
 		
-		cursorImg = new ImageIcon("Cursores/cursor1.png");
+		cursorImg = new ImageIcon(getClass().getResource("/Cursores/cursor1.png"));
 		Toolkit TK = Toolkit.getDefaultToolkit();		 
         cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
         setCursor(cursor);
