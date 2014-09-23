@@ -502,7 +502,7 @@ public class Controlador implements ActionListener
 					JOptionPane.showMessageDialog(null,"SE EMPATO EL JUEGO");
 				}												        	            	    									
 			
-			partida.imrprimirTablero();
+			//partida.imrprimirTablero();
 			}	
         }
         }

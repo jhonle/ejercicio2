@@ -104,7 +104,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		getContentPane().add(panel);
 		
 		JLabel jugador1 = new JLabel("nombre Jugador 1 :");
-		jugador1.setBounds(33,25,130,25);	
+		jugador1.setBounds(33,25,157,25);	
 		panel.add(jugador1);
 		
 	    JLabel ficha1 = new JLabel("Escoga su ficha :");
@@ -126,7 +126,7 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		
 		nombre1 = new JTextField();
 		nombre1.setText("jugador1");
-		nombre1.setBounds(173,25,120,25);
+		nombre1.setBounds(208,25,120,25);
 		nombre1.setBackground(getBackground().cyan);
 		panel.add(nombre1);		
 
@@ -162,15 +162,15 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		btnAceptar.setBounds(228, 307,100,25);
 		panel.add(btnAceptar);		
 		
-		jugador2 = new JLabel("Jugador 2");
-		jugador2.setBounds(49,218,120,25);
+		jugador2 = new JLabel("nombre Jugador 2 :");
+		jugador2.setBounds(33,218,146,25);
 		jugador2.setVisible(false);
 		panel.add(jugador2);
 		
 		nombre2 = new JTextField();
 		nombre2.setBackground(Color.CYAN);
 		nombre2.setText("jugador2");
-		nombre2.setBounds(173,218,120,25);
+		nombre2.setBounds(208,218,120,25);
 		nombre2.setVisible(false);
 		panel.add(nombre2);
 		

@@ -4,6 +4,7 @@ import Controlador.Controlador;
 import Modelo.*;
 import Vista.VentanaDeIngreso;
 import Vista.VentanaDeJuego;
+import java.io.*;
 
 public class Main 
 {		        
@@ -13,10 +14,13 @@ public class Main
      * */	    
 	public static void main(String[] args) 	    
 	{	    	
-		new Controlador();	  
-		
+		new Controlador();	
+		Serializador ser = new Serializador();
+		ser.leerObjeto("Datos.a");
+	 
+	 }
 	}	
-}
+
 
 
 

@@ -39,7 +39,7 @@ public class VentanaDeIngreso extends JFrame
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		this.setTitle("BIENBENIDO");
+		this.setTitle("BIENVENIDO");
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(51, 102, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,21 +49,21 @@ public class VentanaDeIngreso extends JFrame
 		btnIniciarPartida = new JButton("NUEVA PARTIDA");
 		
 		btnIniciarPartida.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
-		btnIniciarPartida.setBounds(225, 74, 187, 41);
+		btnIniciarPartida.setBounds(225, 74, 207, 41);
 		contentPane.add(btnIniciarPartida);
 		
 		btnCargarPartida = new JButton("CARGAR PARTIDA");
 		btnCargarPartida.setEnabled(false);
 		btnCargarPartida.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 		
-		btnCargarPartida.setBounds(225, 138, 187, 35);
+		btnCargarPartida.setBounds(225, 138, 207, 35);
 		contentPane.add(btnCargarPartida);
 		
 		JButton btnJugarEnLan = new JButton("JUGAR EN LAN");
 		btnJugarEnLan.setEnabled(false);
 		btnJugarEnLan.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 	
-		btnJugarEnLan.setBounds(225, 194, 187, 41);
+		btnJugarEnLan.setBounds(225, 194, 207, 41);
 		contentPane.add(btnJugarEnLan);
 		
 		JLabel lblTresEnRaya = new JLabel("TRES EN RAYA");
