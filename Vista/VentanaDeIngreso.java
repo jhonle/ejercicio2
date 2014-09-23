@@ -73,11 +73,11 @@ public class VentanaDeIngreso extends JFrame
 		contentPane.add(lblTresEnRaya);
 		
 		JLabel lblImg = new JLabel("img");
-		//lblImg.setIcon(new ImageIcon(VentanaDeIngreso.class.getResource("/vista/tres_en_raya.jpg")));
+		lblImg.setIcon(new ImageIcon(VentanaDeIngreso.class.getResource("tres_en_raya.jpg")));
 		lblImg.setBounds(12, 67, 187, 168);
 		contentPane.add(lblImg);
 		
-		cursorImg = new ImageIcon("../Cursores/cursor1.png");
+		cursorImg = new ImageIcon("Cursores/cursor1.png");
 		Toolkit TK = Toolkit.getDefaultToolkit();		 
         cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
         setCursor(cursor);
