@@ -1,0 +1,5 @@
+Para ejecutar el programa:
+1 Descargar todos los Archivos de esta carpeta
+2 ejecutar el archivo "tres en raya v2.exe"
+
+NOTA: el archivo "Datos.a" debe estar en el mismo directorio que el ejecutable (tres en raya v2).
