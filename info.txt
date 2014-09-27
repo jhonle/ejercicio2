@@ -1,4 +1,4 @@
-efg ejecutar el Programa desde eclipse:
+abc ejecutar el Programa desde eclipse:
 1 descargarce el proyecto 
 2 importar todos las carpetas a tu proyecto en eclipse
 3 adicionar a tu tu proyecto en eclipse las librerias que se encuentran en  la carpeta "Librerias" 
