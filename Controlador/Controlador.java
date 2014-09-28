@@ -13,9 +13,11 @@ public class Controlador implements ActionListener
 {
 	private	VentanaDeIngreso  ventanaIngreso;
 	private VentanaDeOpciones ventanaOpciones;
-	private	VentanaDeJuego    ventanaJuego;	
+	private	VentanaDeJuego    ventanaJuego;
+	private VentanaRed      ventanaRed;
 	private Partida           partida;
 	private String            tituloVentana = "";	
+	
 	//private int turno=1; //es para controlar que turno preciono el boton
 	private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego
 	/**
@@ -33,7 +35,8 @@ public class Controlador implements ActionListener
 	{	      
 		ventanaIngreso.setLocationRelativeTo(null);
 	    this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
-	 
+	    this.ventanaIngreso.btnJugarEnLan.addActionListener(this);
+	    
 	    ventanaIngreso.setVisible(true);
 	    tipoDeVentanaActual=1;	        	
 	}
@@ -45,17 +48,19 @@ public class Controlador implements ActionListener
         {
         	controlarV1(boton);        	
         }
+        else if (tipoDeVentanaActual==2)
+        {
+        	controlarV2(boton);
+        }
+        /*else if(tipoDeVentanaActual == 4)
+        {
+        	
+        }*/
         else
         {
-        	if (tipoDeVentanaActual==2)
-        	{
-        		controlarV2(boton);
-        	}
-        	else
-        	{
-        		controlarV3(boton);
-        	}        	            
-        }  
+        	controlarV3(boton);
+        }        	            
+         
 	}        		
 	/**
 	 * este metodo controla los eventos de la Ventana1 de inicio
@@ -69,11 +74,31 @@ public class Controlador implements ActionListener
 		    ventanaOpciones = new VentanaDeOpciones();		    
 		    ventanaOpciones.setVisible(true);
 		    this.ventanaOpciones.btnAceptar.addActionListener(this);		    
-		}  				
+		}
+		else if (boton == this.ventanaIngreso.btnJugarEnLan)
+		{   
+			tipoDeVentanaActual=4;
+			ventanaIngreso.setVisible(false);
+		    ventanaRed = new VentanaRed();		    		    		    		   
+		}
 	}
+	/*private void controlarv4(Object boton)
+	{
+		if (boton == this.ventanaRed)
+		{   
+			if(ventanaOpciones.venverificarllenado()==true)
+			{   		         		  	     		  	   		  	    	 
+				tipoDeVentanaActual=3;
+				ventanaOpciones.setVisible(false);
+			    ventanaJuego = new VentanaDeJuego();
+			    ventanaJuego.setVisible(true);
+			    iniciarPartida();			           		  	  
+		  	 }   
+		}     
+	}*/
 	/**
 	 * Este metodo controla los eventos de la Ventana2 de Opciones
-	 * */
+	 * */	
 	private void controlarV2(Object boton) 
 	{
 		if (boton == this.ventanaOpciones.btnAceptar)
