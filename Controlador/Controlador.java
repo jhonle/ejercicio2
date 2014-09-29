@@ -2,9 +2,14 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Iterator;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 import Modelo.*;
 import Vista.*;
@@ -14,10 +19,13 @@ public class Controlador implements ActionListener
 	private	VentanaDeIngreso  ventanaIngreso;
 	private VentanaDeOpciones ventanaOpciones;
 	private	VentanaDeJuego    ventanaJuego;	
+	private VentanaCargarPartida ventanaPartida;
 	private Partida           partida;
 	private String            tituloVentana = "";	
+	private DefaultListModel model;
+	private JScrollPane scrollLista;
 	//private int turno=1; //es para controlar que turno preciono el boton
-	private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego
+	private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego; 4 VentanaCargarPartida
 	/**
 	 * Metodo Contructor
 	 * */	
@@ -33,7 +41,8 @@ public class Controlador implements ActionListener
 	{	      
 		ventanaIngreso.setLocationRelativeTo(null);
 	    this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
-	 
+	    this.ventanaIngreso.btnCargarPartida.addActionListener(this);
+	    this.ventanaIngreso.btnJugarEnLan.addActionListener(this);
 	    ventanaIngreso.setVisible(true);
 	    tipoDeVentanaActual=1;	        	
 	}
@@ -44,18 +53,19 @@ public class Controlador implements ActionListener
         if( tipoDeVentanaActual==1 )
         {
         	controlarV1(boton);        	
+        }        
+        if (tipoDeVentanaActual==2)
+        {        		
+        	controlarV2(boton);
         }
-        else
+        if(tipoDeVentanaActual==3)
         {
-        	if (tipoDeVentanaActual==2)
-        	{
-        		controlarV2(boton);
-        	}
-        	else
-        	{
-        		controlarV3(boton);
-        	}        	            
-        }  
+        	controlarV3(boton);
+        }        	                      
+        if(tipoDeVentanaActual == 4)
+        {
+        	controlarV4(boton);
+        }        
 	}        		
 	/**
 	 * este metodo controla los eventos de la Ventana1 de inicio
@@ -69,7 +79,33 @@ public class Controlador implements ActionListener
 		    ventanaOpciones = new VentanaDeOpciones();		    
 		    ventanaOpciones.setVisible(true);
 		    this.ventanaOpciones.btnAceptar.addActionListener(this);		    
-		}  				
+		}  	
+		else
+		{
+			if(boton == this.ventanaIngreso.btnCargarPartida)
+			{
+				model = new DefaultListModel();
+				tipoDeVentanaActual=4;
+				ventanaIngreso.setVisible(false);
+				ventanaPartida= new VentanaCargarPartida();
+				ventanaPartida.setVisible(true);																			   
+				//cargar datos en JList
+				Serializador ser = new Serializador();
+				BaseDeDato datos = (BaseDeDato)ser.leerObjeto("Datos.a");
+				HashMap<String,Partida> lista = datos.getListaDePartidas();								
+				Iterator it=lista.keySet().iterator();
+				int i=1;
+				while(it.hasNext())
+				{
+					String key=(String) it.next();
+					//System.out.println(key);
+					model.addElement(key);				
+				}							
+				ventanaPartida.list.setModel(model);
+				ventanaPartida.scrollLista.setViewportView(ventanaPartida.list);
+				this.ventanaPartida.btnCargar.addActionListener(this);
+			}			
+		}
 	}
 	/**
 	 * Este metodo controla los eventos de la Ventana2 de Opciones
@@ -87,7 +123,31 @@ public class Controlador implements ActionListener
 			    iniciarPartida();			           		  	  
 		  	 }   
 		}     			
-    }		     
+    }
+	/**
+	 * Este metodo controla los eventos de la Ventana4 de Cargar Paertida
+	 * */
+	private void controlarV4(Object boton)
+	{
+		if(boton == this.ventanaPartida.btnCargar)
+		{
+			tipoDeVentanaActual=3;
+			String valor =(String)ventanaPartida.list.getSelectedValue();			
+			Serializador serializado=new Serializador();
+			BaseDeDato datos=new BaseDeDato();
+			datos=(BaseDeDato)serializado.leerObjeto("Datos.a");
+			partida=datos.getPartida(valor);			
+			ventanaPartida.setVisible(false);
+			partida.imrprimirTablero();
+			System.out.println(partida.getFigura(1));
+			System.out.println(partida.getFigura(2));
+			ventanaJuego=new VentanaDeJuego();			
+			ventanaJuego.setVisible(true);
+			//ventanaJuego.CargarPartida(partida);
+			
+			
+		}
+	}	
 	/**
       * Este metodo se encarga de realizar las operacion correspondiente cuando 
       * se inseta una ficha el la VentanaJuego o cuando se realiza alguna operacion 
@@ -127,7 +187,9 @@ public class Controlador implements ActionListener
 				 new DialogoGuardar(partida,ventanaJuego).setVisible(true);
         	     ventanaJuego.setVisible(false);	
 				
-			} else{      	
+			} 
+			else
+			{      	
 				if(ventanaOpciones.getTipoDePartida()==1)//jugador vs pc
 				{															
 					if(partida.getGanador()==0)
@@ -701,6 +763,77 @@ public class Controlador implements ActionListener
  	    		 */ 	    	 	    	
  	    	} 	    	 	    
  	    }	     	     	     	     	     	     		
+	}
+	/*
+	 * */
+	private void CargarPartida(Partida p)
+	{
+		for(int col=1; col < 10;col++)
+		{
+			if(p.getTablero().VerificarCasilla(col)==false)
+			{
+				if(p.getFigura(1)=="Ficha1" || p.getFigura(2)=="Ficha1")
+				{
+					switch(col)
+					{
+						case 1:ventanaJuego.b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 2:ventanaJuego.b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 3:ventanaJuego.b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 4:ventanaJuego.b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 5:ventanaJuego.b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 6:ventanaJuego.b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 7:ventanaJuego.b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 8:ventanaJuego.b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 9:ventanaJuego.b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+					}
+				}
+				if(p.getFigura(1)=="Ficha2" || p.getFigura(2)=="Ficha2")
+				{					
+					switch(col)
+					{
+						case 1:ventanaJuego.b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 2:ventanaJuego.b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 3:ventanaJuego.b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 4:ventanaJuego.b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 5:ventanaJuego.b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 6:ventanaJuego.b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 7:ventanaJuego.b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 8:ventanaJuego.b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 9:ventanaJuego.b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+					}																	
+				}
+				if(p.getFigura(1)=="Ficha3" || p.getFigura(2)=="Ficha3")
+				{					
+					switch(col)
+					{
+						case 1:ventanaJuego.b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 2:ventanaJuego.b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 3:ventanaJuego.b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 4:ventanaJuego.b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 5:ventanaJuego.b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 6:ventanaJuego.b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 7:ventanaJuego.b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 8:ventanaJuego.b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 9:ventanaJuego.b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+					}																	
+				}
+				if(p.getFigura(1)=="Ficha4" || p.getFigura(2)=="Ficha4")
+				{					
+					switch(col)
+					{
+						case 1:ventanaJuego.b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 2:ventanaJuego.b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 3:ventanaJuego.b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 4:ventanaJuego.b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 5:ventanaJuego.b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 6:ventanaJuego.b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 7:ventanaJuego.b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 8:ventanaJuego.b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 9:ventanaJuego.b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+					}																	
+				}							
+			}													
+		}		
 	}
 }
 	 
