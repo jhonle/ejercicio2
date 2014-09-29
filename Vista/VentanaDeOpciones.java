@@ -21,6 +21,10 @@ import javax.swing.JToolBar;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeListener,ItemListener
 {
@@ -39,6 +43,9 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 	/**Vector que contiene los iconos de las fichas
 	 * y cambia de acuerdo al caso que se requiera 
 	 * */
+	private ImageIcon cursorImg;    
+    private Cursor cursor;
+    private Thread hiloFondo;
 	//caso 0 todos completos
 	private ImageIcon icono[] = 	
 	{
@@ -173,6 +180,12 @@ public class VentanaDeOpciones extends JFrame implements ActionListener,ChangeLi
 		opcion1.addActionListener(this);
 		opcion1.addItemListener(this);
 		opcion2.addItemListener(this);
+	
+		cursorImg = new ImageIcon(getClass().getResource("/Cursores/cursor1.png"));
+		Toolkit TK = Toolkit.getDefaultToolkit();		 
+        cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
+        setCursor(cursor);
+	
 	}
 	/**
 	 * Este metodo cambia el estado de la imagen del JLabel 

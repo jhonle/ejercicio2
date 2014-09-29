@@ -2,20 +2,17 @@ package Modelo;
 
 import java.io.Serializable;
 
+import java.io.Serializable;
+
 public class Ficha implements Serializable
 {
-<<<<<<< HEAD
-   private char ficha;
-   private String figura;
-	public Ficha(char ficha,String fig) 
-=======
    /**
 	 * 
-	 */
+	 */	
 	private static final long serialVersionUID = 6L;
-private char ficha;
-	public Ficha(char ficha) 
->>>>>>> rama-marcelo
+	private char ficha;
+	private String figura;
+	public Ficha(char ficha,String fig) 
 	{		
 		this.ficha = ficha;
 		this.figura=fig;

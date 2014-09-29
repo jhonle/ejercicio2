@@ -2,8 +2,10 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import Modelo.Ficha;
 import Modelo.Jugador;
+import Modelo.Partida;
 import Modelo.Tablero;
 
 
@@ -19,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -26,7 +30,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-
 public class VentanaDeJuego extends JFrame 
 {
 	private static JPanel contentPane;		
@@ -43,12 +46,14 @@ public class VentanaDeJuego extends JFrame
 	private JMenu mnMenu;
 	public JMenuItem menu_Reiniciar;
 	public JMenuItem menu_volverAtras;
-	public JMenuItem menu_GuardarP;
 	private JMenuItem mntmAyuda;
 	private JMenu mnAyuda;
 	private JMenuItem mntmSalir;
 	private JPanel panel;
 	public JLabel lblMsg;	
+	public JMenuItem menu_GuardarPartida;
+	private ImageIcon cursorImg;    
+    private Cursor cursor;
 	/**
 	 * Create the frame.
 	 */
@@ -110,9 +115,6 @@ public class VentanaDeJuego extends JFrame
 			
 		menu_volverAtras = new JMenuItem("Volver a Menu");
 		mnMenu.add(menu_volverAtras);
-		
-		menu_GuardarP = new JMenuItem("Guardar Partida");
-		mnMenu.add(menu_GuardarP);
 			
 		mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() 
@@ -123,6 +125,10 @@ public class VentanaDeJuego extends JFrame
 			}		
 		});
 			
+		menu_GuardarPartida = new JMenuItem("Guardar Partida");
+		mnMenu.add(menu_GuardarPartida);
+		mnMenu.add(mntmSalir);
+		
 		mnMenu.add(mntmSalir);
 			
 		mnAyuda = new JMenu("AYUDA");
@@ -137,14 +143,20 @@ public class VentanaDeJuego extends JFrame
 			    
 			}			
 		});		
-		mnAyuda.add(mntmAyuda);			
+		mnAyuda.add(mntmAyuda);	
+	
+	
+		cursorImg = new ImageIcon(getClass().getResource("/Cursores/cursor1.png"));
+		Toolkit TK = Toolkit.getDefaultToolkit();		 
+        cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
+        setCursor(cursor);
+	
 	}
-
-/**
- * @param numboton  numero de boton que se quiere cambiar su texto(label)
- * @param ficha  Ficha que contiene el Texto para modifical dicho boton               
- * @return void
- * */
+	/**
+	 * @param numboton  numero de boton que se quiere cambiar su texto(label)
+	 * @param ficha  Ficha que contiene el Texto para modifical dicho boton               
+	 * @return void
+	 * */	
 	public void marcarBoton(int numboton, Ficha ficha) 
 	{	    
 		if(numboton==1)b1.setLabel(Character.toString(ficha.getFicha()));
@@ -156,5 +168,75 @@ public class VentanaDeJuego extends JFrame
 	    if(numboton==7)b7.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==8)b8.setLabel(Character.toString(ficha.getFicha()));
 	    if(numboton==9)b9.setLabel(Character.toString(ficha.getFicha()));	   
+	}
+	
+	public void CargarPartida(Partida p)
+	{
+		for(int col=1; col < 10;col++)
+		{
+			if(p.getTablero().VerificarCasilla(col)==false)
+			{
+				if(p.getFigura(1)=="Ficha1" || p.getFigura(2)=="Ficha1")
+				{
+					switch(col)
+					{
+						case 1:b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 2:b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 3:b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 4:b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 5:b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 6:b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 7:b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 8:b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+						case 9:b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Bart.png")));break;
+					}
+				}
+				if(p.getFigura(1)=="Ficha2" || p.getFigura(2)=="Ficha2")
+				{					
+					switch(col)
+					{
+						case 1:b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 2:b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 3:b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 4:b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 5:b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 6:b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 7:b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 8:b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+						case 9:b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Homero.png")));break;
+					}																	
+				}
+				if(p.getFigura(1)=="Ficha3" || p.getFigura(2)=="Ficha3")
+				{					
+					switch(col)
+					{
+						case 1:b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 2:b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 3:b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 4:b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 5:b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 6:b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 7:b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 8:b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+						case 9:b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Maggie.png")));break;
+					}																	
+				}
+				if(p.getFigura(1)=="Ficha4" || p.getFigura(2)=="Ficha4")
+				{					
+					switch(col)
+					{
+						case 1:b1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 2:b2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 3:b3.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 4:b4.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 5:b5.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 6:b6.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 7:b7.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 8:b8.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+						case 9:b9.setIcon(new ImageIcon(getClass().getResource("/imagenes/Marge.png")));break;
+					}																	
+				}							
+			}													
+		}		
 	}
 }

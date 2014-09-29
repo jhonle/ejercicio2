@@ -1,33 +1,25 @@
 package Modelo;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-=======
-
-import vista.VentanaDeJuego;
-
->>>>>>> rama-marcelo
+import java.util.HashMap;
+import java.util.Iterator;
 /**
  *generaliza los tipos de jugada: Vs PC, Vs Jugador2, LAN etc  
  * */
-<<<<<<< HEAD
 public class Partida implements Serializable 
 {
-    protected Tablero tablero;
-=======
-public class Partida implements Serializable {
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 6L;
 	protected Tablero tablero;
->>>>>>> rama-marcelo
     protected Jugador jugador1;
     protected Jugador jugador2;
     protected Computadora pc;
     protected int contador;
     protected int turno;//1 jugador1 /2 jugador2
-    protected int ganador;//1 jugador1 /2 jugador2 /3empate /4pc       
+    protected int ganador;//1 jugador1 /2 jugador2 /3empate /4pc    
+    protected HashMap lista;
     /*
      * Constructor de la clase Juego
      * **/
@@ -50,7 +42,7 @@ public class Partida implements Serializable {
         turno=1;
         ganador=0;        
         tablero.LlenarTablero();
-    }
+    }    
      /**
       * metodo que dada una posicion, verifica la casilla, inserta la ficha 
      *  de acuerdo al turno del jugador y verifica el resultado(gana-empate)
@@ -144,7 +136,6 @@ public class Partida implements Serializable {
 			}		   	
 		}
 	}
-<<<<<<< HEAD
     /**
 	  * Crea un nuevo jugador.  
 	  * @param nombre nombre del jugador
@@ -222,17 +213,9 @@ public class Partida implements Serializable {
 	 public String getFiguraPc()
 	 {
 		 return pc.getFicha().getFigura();
+	 }	 
+	 public Tablero getTablero()
+	 {		 
+		 return tablero;
 	 }
-=======
-
-	public Ficha[][] getTablero() {
-		
-		return tablero.getTablero();
-	}
-
-	
-
-	
-
->>>>>>> rama-marcelo
 }

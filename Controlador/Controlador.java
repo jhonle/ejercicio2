@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 import Modelo.*;
 import Vista.*;
 
@@ -32,6 +33,7 @@ public class Controlador implements ActionListener
 	{	      
 		ventanaIngreso.setLocationRelativeTo(null);
 	    this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
+	 
 	    ventanaIngreso.setVisible(true);
 	    tipoDeVentanaActual=1;	        	
 	}
@@ -107,13 +109,6 @@ public class Controlador implements ActionListener
         }		
 		else
         {  			
-			if(boton== this.ventanaJuego.menu_GuardarP)
-			{
-				BaseDeDato datos = new BaseDeDato();
-				Serializador ser= new Serializador();
-				datos = (BaseDeDato)ser.leerObjeto("Datos.d");
-				
-			}
 			if( boton == this.ventanaJuego.menu_Reiniciar)         
 			{      	    
 				int ax = JOptionPane.showConfirmDialog(null, "Se perderan todos los datos de la partida actual");
@@ -128,7 +123,11 @@ public class Controlador implements ActionListener
 				}         			
 			}
 			else
-			{        	
+			{ if(boton == this.ventanaJuego.menu_GuardarPartida){
+				 new DialogoGuardar(partida,ventanaJuego).setVisible(true);
+        	     ventanaJuego.setVisible(false);	
+				
+			} else{      	
 				if(ventanaOpciones.getTipoDePartida()==1)//jugador vs pc
 				{															
 					if(partida.getGanador()==0)
@@ -502,7 +501,10 @@ public class Controlador implements ActionListener
 					ventanaJuego.lblMsg.setText("EMPATE ");
 					JOptionPane.showMessageDialog(null,"SE EMPATO EL JUEGO");
 				}												        	            	    									
-			}		
+			
+			partida.imrprimirTablero();
+			}	
+        }
         }
 	}
 	/**
@@ -515,7 +517,7 @@ public class Controlador implements ActionListener
 			int pos=partida.realizarJugadaPc();
 			MarcarBotonPc(pos);
 		} 							  
-	}	
+	}															
 	private void MarcarBoton(int pos,int turnojug)
 	{
 		if(partida.getFigura(turnojug)== "Ficha1")
@@ -659,7 +661,10 @@ public class Controlador implements ActionListener
  	    this.ventanaJuego.b9.addActionListener(this);
  	     
  	    this.ventanaJuego.menu_volverAtras.addActionListener(this);
- 	    this.ventanaJuego.menu_Reiniciar.addActionListener(this);		           	   
+ 	    this.ventanaJuego.menu_Reiniciar.addActionListener(this);	
+ 	   
+ 	    this.ventanaJuego.menu_GuardarPartida.addActionListener(this);
+ 	  
  	    if(ventanaOpciones.getTipoDePartida()==2)//caso jugador1 vs jugador2 	   
  	    { 	      		    		   
  	    	String aux1 =ventanaOpciones.getFichaJugador1();

@@ -2,8 +2,10 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -26,7 +29,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-
 public class VentanaDeJuego extends JFrame 
 {
 	private static JPanel contentPane;		
@@ -43,12 +45,14 @@ public class VentanaDeJuego extends JFrame
 	private JMenu mnMenu;
 	public JMenuItem menu_Reiniciar;
 	public JMenuItem menu_volverAtras;
-	public JMenuItem menu_GuardarP;
 	private JMenuItem mntmAyuda;
 	private JMenu mnAyuda;
 	private JMenuItem mntmSalir;
 	private JPanel panel;
 	public JLabel lblMsg;	
+	public JMenuItem menu_GuardarPartida;
+	private ImageIcon cursorImg;    
+    private Cursor cursor;
 	/**
 	 * Create the frame.
 	 */
@@ -110,9 +114,6 @@ public class VentanaDeJuego extends JFrame
 			
 		menu_volverAtras = new JMenuItem("Volver a Menu");
 		mnMenu.add(menu_volverAtras);
-		
-		menu_GuardarP = new JMenuItem("Guardar Partida");
-		mnMenu.add(menu_GuardarP);
 			
 		mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() 
@@ -123,6 +124,10 @@ public class VentanaDeJuego extends JFrame
 			}		
 		});
 			
+		menu_GuardarPartida = new JMenuItem("Guardar Partida");
+		mnMenu.add(menu_GuardarPartida);
+		mnMenu.add(mntmSalir);
+		
 		mnMenu.add(mntmSalir);
 			
 		mnAyuda = new JMenu("AYUDA");
@@ -137,7 +142,14 @@ public class VentanaDeJuego extends JFrame
 			    
 			}			
 		});		
-		mnAyuda.add(mntmAyuda);			
+		mnAyuda.add(mntmAyuda);	
+	
+	
+		cursorImg = new ImageIcon(getClass().getResource("/Cursores/cursor1.png"));
+		Toolkit TK = Toolkit.getDefaultToolkit();		 
+        cursor = TK.createCustomCursor(cursorImg.getImage(),new Point(2,2),"Cursor 01");
+        setCursor(cursor);
+	
 	}
 
 /**

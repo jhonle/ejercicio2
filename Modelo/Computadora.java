@@ -1,21 +1,14 @@
 package Modelo;
 
-<<<<<<< HEAD
-public class Computadora 
-{   
-	private Ficha ficha;
-=======
 import java.io.Serializable;
 
-
 public class Computadora implements Serializable
-{
-   /**
+{   
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6L;
-private Ficha ficha; 
->>>>>>> rama-marcelo
+	private Ficha ficha;
 	public Computadora(Ficha ficha) 
 	{	
 		this.ficha = ficha;
