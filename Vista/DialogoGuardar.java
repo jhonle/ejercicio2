@@ -79,8 +79,10 @@ public class DialogoGuardar extends JDialog {
 						if(verificarNombre()){
 							
 						  guardarPartida();
-				    	   
-				          }
+						  }
+						}else{
+					         JOptionPane.showMessageDialog(null,"Ingrese Un nombre Para la partida por favor");
+
 						}
 					}
 				});

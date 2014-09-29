@@ -14,7 +14,7 @@ public class Controlador implements ActionListener
 	private	VentanaDeIngreso  ventanaIngreso;
 	private VentanaDeOpciones ventanaOpciones;
 	private	VentanaDeJuego    ventanaJuego;
-	private VentanaRed      ventanaRed;
+	private VentanaRed        ventanaRed;
 	private Partida           partida;
 	private String            tituloVentana = "";	
 	
@@ -47,19 +47,22 @@ public class Controlador implements ActionListener
         if( tipoDeVentanaActual==1 )
         {
         	controlarV1(boton);        	
-        }
-        else if (tipoDeVentanaActual==2)
-        {
-        	controlarV2(boton);
-        }
-        /*else if(tipoDeVentanaActual == 4)
-        {
-        	
-        }*/
-        else
-        {
-        	controlarV3(boton);
-        }        	            
+        } else 
+          {
+        	if (tipoDeVentanaActual==2)
+            {
+        	   controlarV2(boton);
+            }else
+             {
+            	if (tipoDeVentanaActual==3)
+                 {
+        	        controlarV3(boton);
+                 }else
+                 {
+                	 controlarV4(boton); 
+                 }
+             }
+           }
          
 	}        		
 	/**
@@ -79,7 +82,9 @@ public class Controlador implements ActionListener
 		{   
 			tipoDeVentanaActual=4;
 			ventanaIngreso.setVisible(false);
-		    ventanaRed = new VentanaRed();		    		    		    		   
+		    ventanaRed = new VentanaRed();
+		    ControladorRed controlDeRed = new ControladorRed(ventanaRed);
+		    ventanaRed.mntmVolveratras.addActionListener(this);
 		}
 	}
 	/*private void controlarv4(Object boton)
@@ -532,6 +537,26 @@ public class Controlador implements ActionListener
         }
         }
 	}
+	
+	private void controlarV4(Object boton){
+		if( boton == this.ventanaRed.mntmVolveratras)
+        {      	    
+		    	int ax = JOptionPane.showConfirmDialog(null, "Se perderan todos los datos de la partida actual");
+                if(ax == JOptionPane.YES_OPTION)
+                {            	   
+            	ventanaIngreso.setVisible(true);
+                ventanaRed.dispose();
+                tipoDeVentanaActual=1;
+                //turno=1;                
+               }         
+          }		
+	  }
+	
+	
+	
+	
+	
+	
 	/**
 	 * 
 	 * */

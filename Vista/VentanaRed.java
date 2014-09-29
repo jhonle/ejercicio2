@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Modelo.ConexionCliente;
+import Modelo.ConexionServidor;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -19,8 +19,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 
-public class VentanaRed extends JFrame implements ActionListener
+public class VentanaRed extends JFrame 
 {
     public JPanel panelUnirse1;
     public JPanel panelUnirse2;
@@ -67,7 +68,7 @@ public class VentanaRed extends JFrame implements ActionListener
 		txtIp = new JTextField();
 		txtIp.setBounds(118,81,117,25);
 		
-		btnConectar = new JButton("Aceptar");
+		btnConectar = new JButton("Conectar");
 		btnConectar.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ROMAN_BASELINE, 12));
 		btnConectar.setBounds(118,111,100,30);
 		panelUnirse1.add(mensaje);		
@@ -126,7 +127,7 @@ public class VentanaRed extends JFrame implements ActionListener
 		JLabel lblFiigura = new JLabel("Fiigura");
 		lblFiigura.setBounds(12, 48, 70, 15);
 		panelCrear.add(lblFiigura);
-		btnConectar.addActionListener(this);
+	//	btnConectar.addActionListener(this);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -138,7 +139,7 @@ public class VentanaRed extends JFrame implements ActionListener
 		mnMenu.add(mntmVolveratras);
 		
 	}
-	public void actionPerformed(ActionEvent e)
+	/*public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource().equals(btnConectar))
 		{
@@ -147,5 +148,5 @@ public class VentanaRed extends JFrame implements ActionListener
 			 ventanaJuego.setVisible(true);
 			 setVisible(false);
 		}
-	}
+	}*/
 }

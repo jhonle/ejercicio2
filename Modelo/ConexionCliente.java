@@ -49,7 +49,7 @@ public class ConexionCliente
 		try
 		{
 			respuesta = entrada.readLine();
-			System.out.print(respuesta);
+			//System.out.print(respuesta);
 		}
 		catch (Exception e) 
 		{
@@ -69,6 +69,18 @@ public class ConexionCliente
 		catch (Exception e)
 		{		
 		}
+	}
+	/**
+	 *
+	 * @return String; Retorna IP del cliente
+	 */
+	public String getIP() {
+		String res="";
+		 res = cliente.getInetAddress().toString();
+		// System.out.println("SERVIDOR: IP CLIENTE = "+ res);
+		
+		return res;
+	
 	}
 	
 
