@@ -137,6 +137,8 @@ public class Partida implements Serializable
 	  * Crea un nuevo jugador.  
 	  * @param nombre nombre del jugador
 	  * @param ficha ficha  del jugador
+	  * @param fig nombre de la figura que utilizara
+	  * @param nrojugador numero de jugador
 	  * */
     public boolean CrearJugador(String nombre,char ficha,String fig,int nrojugador)
     {                                                                                         

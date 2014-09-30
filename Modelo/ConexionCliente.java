@@ -3,6 +3,8 @@ package Modelo;
 import java.net.*;
 import java.io.*;
 
+import javax.swing.JOptionPane;
+
 public class ConexionCliente 
 {
   private Socket cliente;
@@ -10,6 +12,7 @@ public class ConexionCliente
   private PrintStream salida;
   private int puerto =9999;
   private String ip,datoRecibido,datoEnviado;
+  private boolean estado; // true si se encuentra conectado, false si es que no
   
 	public ConexionCliente(String ip) 
 	{
@@ -23,18 +26,21 @@ public class ConexionCliente
 			entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
 			teclado = new BufferedReader(new InputStreamReader(System.in));
 			salida = new PrintStream(cliente.getOutputStream());						
+		    estado= true;
 		}		
 		catch(Exception e)
 		{
-			
+			JOptionPane.showMessageDialog(null,"Error no se puede establecer la coneccion co el servidor");
+
+			estado = false;
 		}		
 	}
-	public void EnviarDatos(int posicion, String f,char c)
+	public void EnviarDatos( String f)
 	{
 		try
 		{
 							
-			salida.println(f + " " + c + " " + posicion);
+			salida.println(f);
 											
 		}
 		catch (Exception e) 
@@ -80,7 +86,10 @@ public class ConexionCliente
 		// System.out.println("SERVIDOR: IP CLIENTE = "+ res);
 		
 		return res;
-	
+		//System.out.println(" Cliente se conecto con  el servidor : ");
+	}
+	public boolean getEstado() {
+	  return estado;	
 	}
 	
 

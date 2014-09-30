@@ -40,7 +40,8 @@ public class Sonido extends Thread{
 	public synchronized void run(){
 		try{
 			ol.open(ais);
-			ol.loop(0); 
+			
+			ol.loop(1); 
 		}
 		catch(Exception e){
 		}
@@ -50,7 +51,7 @@ public class Sonido extends Thread{
 
 
 
-	
+	/*
 	 	public static void main(String[] args){
 	 		Sonido s = new Sonido("sonidos/simpsonTema.wav");
 			s.start();
@@ -77,7 +78,7 @@ public class Sonido extends Thread{
 			}
 	 	}	
 	}
-
+*/
 }
 
 

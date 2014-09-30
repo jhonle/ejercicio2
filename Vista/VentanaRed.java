@@ -14,139 +14,200 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
+import javax.swing.event.ChangeListener;
 
-public class VentanaRed extends JFrame 
+public class VentanaRed extends JFrame implements ItemListener 
 {
-    public JPanel panelUnirse1;
-    public JPanel panelUnirse2;
-   
-    private JTextArea mensaje;
-	
-    public JTextField txtIp;
-    public JTextField txtJugadorServidor;
-	public JTextField txtJugadorCliente;
+    public JPanel panelUnirse1,panelServidor;//DONDE PONES LA IP
+    //panelUnirse2 panel para los datos
+    public JTextArea mensaje;
+    public JLabel direccion,imagen,imagen2;
+    public JTextField txtIp,txtJugadorServidor,txtJugadorCliente;    	
+	public JMenuItem mntmVolveratras;    
+	public JButton btnConectar,btnUnirseAPartida,btnNewButton;    	
+    public JComboBox comboCliente,comboServidor;           	
+    public JTabbedPane tabed= new JTabbedPane();
     
-	public JMenuItem mntmVolveratras;
+    public JTextField textField;
     
-	public JButton btnConectar;
-    public JButton btnUnirseAPartida;
-    public JButton btnCrearPartida;
-	
-    public JComboBox comboCliente;
-    public JComboBox comboServidor;
-	
-
+    public JComboBox comboBox;
+    public String img[] = {"Ficha1","Ficha2","Ficha3","Ficha4"};
+    public ImageIcon icono[] = 	
+    	{
+    			new ImageIcon(getClass().getResource("/imagenes/Bart.png")),
+    			new ImageIcon(getClass().getResource("/imagenes/Homero.png")),
+    			new ImageIcon(getClass().getResource("/imagenes/Maggie.png")),
+    			new ImageIcon(getClass().getResource("/imagenes/Marge.png"))
+    	};
+    public JLabel labelMsg;
 	public VentanaRed() 
 	{
-		setResizable(false);		
-		setSize(329, 242);
-		setLocation(200,150);
-		getContentPane().setLayout(null);
-		setVisible(true);
-		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 323, 191);
-		getContentPane().add(tabbedPane);
-		panelUnirse1 = new JPanel();
-		tabbedPane.addTab("Unirse a partida", null, panelUnirse1, null);
-		panelUnirse1.setLayout(null);
-		
-		mensaje = new JTextArea();
-		mensaje.setText(" para poder jugar en red ingrese la \n direccion  ip de la computadora servidor\n con la que va a jugar");
-		mensaje.setBounds(0,12,294,60);
-		mensaje.setEnabled(false);
-		
-		JLabel direccion = new JLabel("direccion ip:");
-		direccion.setBounds(10,81,107,30);
-		
-		txtIp = new JTextField();
-		txtIp.setBounds(118,81,117,25);
-		
-		btnConectar = new JButton("Conectar");
-		btnConectar.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ROMAN_BASELINE, 12));
-		btnConectar.setBounds(118,111,100,30);
-		panelUnirse1.add(mensaje);		
-		panelUnirse1.add(txtIp);
-		panelUnirse1.add(direccion);
-		panelUnirse1.add(btnConectar);
-		
-		panelUnirse2 = new JPanel();
-		panelUnirse2.setBounds(0, 0, 318, 164);
-		panelUnirse1.add(panelUnirse2);
-		panelUnirse2.setLayout(null);
-		
-		btnUnirseAPartida = new JButton("Unirse");
-		btnUnirseAPartida.setBounds(200, 111, 80, 25);
-		panelUnirse2.add(btnUnirseAPartida);
-		
-		txtJugadorCliente = new JTextField();
-		txtJugadorCliente.setText("jugador2");
-		txtJugadorCliente.setBounds(166, 27, 114, 19);
-		panelUnirse2.add(txtJugadorCliente);
-		txtJugadorCliente.setColumns(10);
-		
-		comboCliente = new JComboBox();
-		comboCliente.setBounds(212, 58, 80, 24);
-		panelUnirse2.add(comboCliente);
-		
-		JLabel lblNombreDeJugador = new JLabel("Nombre de Jugador");
-		lblNombreDeJugador.setBounds(12, 29, 114, 15);
-		panelUnirse2.add(lblNombreDeJugador);
-		
-		panelUnirse2.setVisible(false);
-		
-		JPanel panelCrear = new JPanel();
-		panelCrear.setToolTipText("");
-		tabbedPane.addTab("Crear Partida", null, panelCrear, null);
-		panelCrear.setLayout(null);
-		
-		btnCrearPartida = new JButton("CREAR");
-		btnCrearPartida.setBounds(165, 114, 117, 25);
-		panelCrear.add(btnCrearPartida);
-		
-		txtJugadorServidor = new JTextField();
-		txtJugadorServidor.setText("jugador1");
-		txtJugadorServidor.setBounds(168, 12, 114, 19);
-		panelCrear.add(txtJugadorServidor);
-		txtJugadorServidor.setColumns(10);
-		
-		JLabel lblNombreDelJugador = new JLabel("Nombre del Jugador");
-		lblNombreDelJugador.setBounds(12, 14, 150, 15);
-		panelCrear.add(lblNombreDelJugador);
-		
-		comboServidor = new JComboBox();
-		comboServidor.setBounds(165, 43, 91, 24);
-		panelCrear.add(comboServidor);
-		
-		JLabel lblFiigura = new JLabel("Fiigura");
-		lblFiigura.setBounds(12, 48, 70, 15);
-		panelCrear.add(lblFiigura);
-	//	btnConectar.addActionListener(this);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnMenu = new JMenu("Menu");
-		menuBar.add(mnMenu);
-		
-		mntmVolveratras = new JMenuItem("Volver Atras");
-		mnMenu.add(mntmVolveratras);
-		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300,250);
+        setLocation(200,150);
+        setVisible(true);
+        
+        tabed.setBounds(0,10,280,240);
+        getContentPane().add(tabed);
+        
+        panelUnirse1 = new JPanel();
+        panelUnirse1.setBounds(0,0,280,240);
+        panelUnirse1.setLayout(null);
+        
+        mensaje = new JTextArea("para jugar en red ingrese \n la ip de la computadora \n con la que va a jugar en red");
+        mensaje.setBounds(0,20,275,76);
+        
+        direccion = new JLabel("direccion ip");
+        direccion.setBounds(37,107,63,30);
+        
+        txtIp = new JTextField();
+        txtIp.setBounds(110,107,114, 30);
+        
+        btnConectar = new JButton("Conectarse");                
+        btnConectar.setBounds(86,143,90,30);
+        
+        // seguno panel ----------------------
+        
+        txtJugadorCliente = new JTextField("jugador2");
+        txtJugadorCliente.setBounds(149,53,120,25);
+        txtJugadorCliente.setVisible(false);
+        
+        imagen = new JLabel(" ");
+	    imagen.setBounds(40, 40, 100, 80);
+	    imagen.setVisible(false);
+	    panelUnirse1.add(imagen);
+        
+        comboCliente = new JComboBox(img);
+        imagen.setIcon(icono[0]);
+        comboCliente.setBounds(159,89,100,25);
+        comboCliente.addItemListener(this);
+        comboCliente.setVisible(false);
+        
+        btnUnirseAPartida = new JButton("Unirser a partida");
+        btnUnirseAPartida.setBounds(32,148,160,25);
+        btnUnirseAPartida.setVisible(false);
+        	
+        
+        panelUnirse1.add(txtJugadorCliente);
+        panelUnirse1.add(btnUnirseAPartida);
+        panelUnirse1.add(comboCliente);
+        panelUnirse1.add(mensaje);
+        panelUnirse1.add(txtIp);
+        panelUnirse1.add(direccion);
+        panelUnirse1.add(btnConectar);
+        
+        
+        panelServidor = new JPanel();
+        panelServidor.setBounds(0,0,280,240);
+        panelServidor.setLayout(null);
+        
+        imagen2 = new JLabel();
+	    imagen2.setBounds(40, 40, 100, 80);
+	    
+	    panelServidor.add(imagen2);
+        
+                        
+        tabed.addTab("Crear partida",null,panelServidor);
+        
+        btnNewButton = new JButton("Crear");        
+        
+        btnNewButton.setLocation(161, 120);
+        btnNewButton.setSize(120, 25);
+        panelServidor.add(btnNewButton);
+        
+        textField = new JTextField();
+        textField.setLocation(161, 12);
+        textField.setSize(100, 25);
+        panelServidor.add(textField);
+        textField.setColumns(10);
+        
+        comboBox = new JComboBox(img);        
+        imagen2.setIcon(icono[0]);        
+        comboBox.setLocation(161, 79);
+        comboBox.setSize(100, 30);
+        comboBox.addItemListener(this);
+        panelServidor.add(comboBox);
+        
+        JLabel lblNombreDelJugador = new JLabel("Nombre del Jugador 1");
+        lblNombreDelJugador.setBounds(12, 12, 145, 25);
+        panelServidor.add(lblNombreDelJugador);
+        
+        JLabel lblFicha = new JLabel("Ficha");
+        lblFicha.setBounds(80, 83, 56, 22);
+        panelServidor.add(lblFicha);
+        
+        labelMsg = new JLabel("");
+        labelMsg.setBounds(12, 148, 213, 27);
+        panelServidor.add(labelMsg);
+        tabed.addTab("Conectares a partida",null,panelUnirse1);
 	}
-	/*public void actionPerformed(ActionEvent e)
+	
+	@Override
+	public void itemStateChanged(ItemEvent a)
 	{
-		if(e.getSource().equals(btnConectar))
+		if(a.getSource().equals(comboCliente))
 		{
-			 //ConexionCliente conexion = new ConexionCliente(ip.getText());
-			 VentanaDeJuego ventanaJuego = new VentanaDeJuego();
-			 ventanaJuego.setVisible(true);
-			 setVisible(false);
+			if(comboCliente.getSelectedIndex() == 1)
+			{
+				imagen.setIcon(icono[1]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
+			if(comboCliente.getSelectedIndex() == 2)
+			{
+				imagen.setIcon(icono[2]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
+			if(comboCliente.getSelectedIndex() == 3)
+			{
+				imagen.setIcon(icono[3]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
+			if(comboCliente.getSelectedIndex() == 4)
+			{
+				imagen.setIcon(icono[4]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
+			if(comboCliente.getSelectedIndex() == 0)
+			{
+				imagen.setIcon(icono[0]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}			
+	     }
+		else if(a.getSource().equals(comboBox))
+		{
+			if(comboBox.getSelectedIndex() == 1)
+			{
+				imagen2.setIcon(icono[1]);
+			}
+			if(comboBox.getSelectedIndex() == 2)
+			{
+				imagen2.setIcon(icono[2]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
+			if(comboBox.getSelectedIndex() == 3)
+			{
+				imagen2.setIcon(icono[3]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
+			if(comboBox.getSelectedIndex() == 4)
+			{
+				imagen2.setIcon(icono[4]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
+			if(comboBox.getSelectedIndex() == 0)
+			{
+				imagen2.setIcon(icono[0]);
+				System.out.println(comboCliente.getSelectedItem().toString());
+			}
 		}
-	}*/
-}
+	}
+}	

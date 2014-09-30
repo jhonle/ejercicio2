@@ -11,6 +11,7 @@ public class ConexionServidor
   private PrintStream salida;
   private int puerto =9999;
   private String ip,datoRecibido,datoEnviado;
+  private boolean estado;
   
 	
 	public boolean iniciarsServicio()
@@ -29,12 +30,12 @@ public class ConexionServidor
 	}
 	
 	
-	public void EnviarDatos(int posicion, String f,char c)
+	public void EnviarDatos(String f)
 	{
 		try
 		{
 							
-			salida.println(f + " " + c + " " + posicion);
+			salida.println(f );
 											
 		}
 		catch (Exception e) 
@@ -81,12 +82,14 @@ public class ConexionServidor
          	        entrada = new BufferedReader(new InputStreamReader(skCliente.getInputStream()));
        			    teclado = new BufferedReader(new InputStreamReader(System.in));
        			    salida = new PrintStream(skCliente.getOutputStream());	
-					return true;
+					estado = true;
+       			    return true;
 					
 				} catch (IOException e) {
 					System.out.println("error al conectar con cliente");
-					e.printStackTrace();
-				  return false;
+				 	e.printStackTrace();
+				    estado = false;
+					return false;
 				}
     	
       }
@@ -100,6 +103,12 @@ public class ConexionServidor
 		
 		return res;
 	
+	}
+
+
+	public boolean getEstado() {
+		return estado; 
+		
 	}
 
 

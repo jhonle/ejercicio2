@@ -17,6 +17,7 @@ public class Controlador implements ActionListener
 	private VentanaRed        ventanaRed;
 	private Partida           partida;
 	private String            tituloVentana = "";	
+	private ControladorRed    controlDeRed ;
 	
 	//private int turno=1; //es para controlar que turno preciono el boton
 	private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego
@@ -83,8 +84,8 @@ public class Controlador implements ActionListener
 			tipoDeVentanaActual=4;
 			ventanaIngreso.setVisible(false);
 		    ventanaRed = new VentanaRed();
-		    ControladorRed controlDeRed = new ControladorRed(ventanaRed);
-		    ventanaRed.mntmVolveratras.addActionListener(this);
+		    controlDeRed = new ControladorRed(ventanaRed);
+		   // ventanaRed.mntmVolveratras.addActionListener(this);
 		}
 	}
 	/*private void controlarv4(Object boton)
@@ -547,6 +548,7 @@ public class Controlador implements ActionListener
             	ventanaIngreso.setVisible(true);
                 ventanaRed.dispose();
                 tipoDeVentanaActual=1;
+                controlDeRed=null;
                 //turno=1;                
                }         
           }		
@@ -726,7 +728,7 @@ public class Controlador implements ActionListener
 	     		System.out.println("nombre2 : "+ventanaOpciones.getNombreJugador2()+" ficha : "+cad2+" figura: "+ventanaOpciones.getFigura(2) );*/ 	    	
  	    	partida.CrearJugador(ventanaOpciones.getNombreJugador1(), cad1, ventanaOpciones.getFigura(1),1);
  	    	partida.CrearJugador(ventanaOpciones.getNombreJugador2(),cad2,ventanaOpciones.getFigura(2),2);
- 	    	ventanaJuego.lblMsg.setText("TURNO :"+ventanaOpciones.getNombreJugador(partida.getTurno())+" "+partida.getFigura(1));
+ 	    	ventanaJuego.lblMsg.setText("TURNO :"+ventanaOpciones.getNombreJugador(partida.getTurno()));
  	    	ventanaJuego.setTitle("PARTIDA MULTIJUGADOR");	     		    		    
  	    }
  	    else 	    

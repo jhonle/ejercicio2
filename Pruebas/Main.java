@@ -18,7 +18,7 @@ public class Main
 		new Controlador();	
 		Serializador ser = new Serializador();
 		ser.leerObjeto("Datos.a");
-		Sonido s = new Sonido("src/Sonidos/simpsonTema.wav");
+		Sonido s = new Sonido("Sonidos/simpsonTema.wav");//puede aver problemas con "src" boorar para exportar a ejecutable
 		s.start();
 	   
 	 }

@@ -22,7 +22,7 @@ public class Prueba_Conexion_Servidor {
 	       
 	        int	posicion = Integer.parseInt(scaner.next());
 	 		 
-	        servidor.EnviarDatos(posicion, "nombre Ficha", 'X');
+	       // servidor.EnviarDatos(posicion, "nombre Ficha", 'X');
 	       
 	        System.out.println("Esperando cliente.....");     
 	 	

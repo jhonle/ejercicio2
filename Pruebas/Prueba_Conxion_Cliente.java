@@ -19,7 +19,7 @@ public class Prueba_Conxion_Cliente {
 	    while(cont<=9){
 		         
 	    	 int	posicion = Integer.parseInt(scaner.next());
-	    	 cliente.EnviarDatos(posicion, "nombre Ficha", 'X');
+	    	// cliente.EnviarDatos(posicion, "nombre Ficha", 'X');
 		     
 	    	  System.out.println("SERVIDOR:" +cliente.RecibirDatos());
 	    	 System.out.println("Esperando servidor.....");     
