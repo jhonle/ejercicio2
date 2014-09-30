@@ -230,7 +230,7 @@ public class ControladorRed implements ActionListener {
 	    this.ventanaDeJuego.menu_volverAtras.setVisible(false);
 	   
 	    
-	      if(cliente==true&&coneccion==true)//caso jugador1 vs jugador2 	   
+	      if(cliente==true)//caso jugador1 vs jugador2 	   
 	    { 	      		    		   
 		        partida.CrearJugador(getnombreJugador(datosDeServidor),'x',getNombreFicha(datosDeServidor),1);//creamos al jugador cliente
                 partida.CrearJugador(nombreJugador,'O',nomFich,2);//creamos al jugador cliente
@@ -239,7 +239,7 @@ public class ControladorRed implements ActionListener {
 	    	ventanaDeJuego.setTitle("PARTIDA LAN");	     		    		    
 	    }
 	    else 	    
-	    { 	 if(servidor==true&&coneccion==true) {
+	    { 	 if(servidor==true) {
 	    	
 
 	        partida.CrearJugador(nombreJugador,'X',nomFich,1);//creamos al jugador cliente
