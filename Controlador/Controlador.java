@@ -13,9 +13,12 @@ public class Controlador implements ActionListener
 {
 	private	VentanaDeIngreso  ventanaIngreso;
 	private VentanaDeOpciones ventanaOpciones;
-	private	VentanaDeJuego    ventanaJuego;	
+	private	VentanaDeJuego    ventanaJuego;
+	private VentanaRed        ventanaRed;
 	private Partida           partida;
 	private String            tituloVentana = "";	
+	private ControladorRed    controlDeRed ;
+	
 	//private int turno=1; //es para controlar que turno preciono el boton
 	private int tipoDeVentanaActual; // ventana que se muestra: 1 VentanaDeIngreso; 2 VentanaDeOpciones; 3 VentanaDeJuego
 	/**
@@ -33,7 +36,8 @@ public class Controlador implements ActionListener
 	{	      
 		ventanaIngreso.setLocationRelativeTo(null);
 	    this.ventanaIngreso.btnIniciarPartida.addActionListener(this);
-	 
+	    this.ventanaIngreso.btnJugarEnLan.addActionListener(this);
+	    
 	    ventanaIngreso.setVisible(true);
 	    tipoDeVentanaActual=1;	        	
 	}
@@ -44,18 +48,23 @@ public class Controlador implements ActionListener
         if( tipoDeVentanaActual==1 )
         {
         	controlarV1(boton);        	
-        }
-        else
-        {
+        } else 
+          {
         	if (tipoDeVentanaActual==2)
-        	{
-        		controlarV2(boton);
-        	}
-        	else
-        	{
-        		controlarV3(boton);
-        	}        	            
-        }  
+            {
+        	   controlarV2(boton);
+            }else
+             {
+            	if (tipoDeVentanaActual==3)
+                 {
+        	        controlarV3(boton);
+                 }else
+                 {
+                	 controlarV4(boton); 
+                 }
+             }
+           }
+         
 	}        		
 	/**
 	 * este metodo controla los eventos de la Ventana1 de inicio
@@ -69,11 +78,33 @@ public class Controlador implements ActionListener
 		    ventanaOpciones = new VentanaDeOpciones();		    
 		    ventanaOpciones.setVisible(true);
 		    this.ventanaOpciones.btnAceptar.addActionListener(this);		    
-		}  				
+		}
+		else if (boton == this.ventanaIngreso.btnJugarEnLan)
+		{   
+			tipoDeVentanaActual=4;
+			ventanaIngreso.setVisible(false);
+		    ventanaRed = new VentanaRed();
+		    controlDeRed = new ControladorRed(ventanaRed);
+		   // ventanaRed.mntmVolveratras.addActionListener(this);
+		}
 	}
+	/*private void controlarv4(Object boton)
+	{
+		if (boton == this.ventanaRed)
+		{   
+			if(ventanaOpciones.venverificarllenado()==true)
+			{   		         		  	     		  	   		  	    	 
+				tipoDeVentanaActual=3;
+				ventanaOpciones.setVisible(false);
+			    ventanaJuego = new VentanaDeJuego();
+			    ventanaJuego.setVisible(true);
+			    iniciarPartida();			           		  	  
+		  	 }   
+		}     
+	}*/
 	/**
 	 * Este metodo controla los eventos de la Ventana2 de Opciones
-	 * */
+	 * */	
 	private void controlarV2(Object boton) 
 	{
 		if (boton == this.ventanaOpciones.btnAceptar)
@@ -507,6 +538,27 @@ public class Controlador implements ActionListener
         }
         }
 	}
+	
+	private void controlarV4(Object boton){
+		if( boton == this.ventanaRed.mntmVolveratras)
+        {      	    
+		    	int ax = JOptionPane.showConfirmDialog(null, "Se perderan todos los datos de la partida actual");
+                if(ax == JOptionPane.YES_OPTION)
+                {            	   
+            	ventanaIngreso.setVisible(true);
+                ventanaRed.dispose();
+                tipoDeVentanaActual=1;
+                controlDeRed=null;
+                //turno=1;                
+               }         
+          }		
+	  }
+	
+	
+	
+	
+	
+	
 	/**
 	 * 
 	 * */
@@ -676,7 +728,7 @@ public class Controlador implements ActionListener
 	     		System.out.println("nombre2 : "+ventanaOpciones.getNombreJugador2()+" ficha : "+cad2+" figura: "+ventanaOpciones.getFigura(2) );*/ 	    	
  	    	partida.CrearJugador(ventanaOpciones.getNombreJugador1(), cad1, ventanaOpciones.getFigura(1),1);
  	    	partida.CrearJugador(ventanaOpciones.getNombreJugador2(),cad2,ventanaOpciones.getFigura(2),2);
- 	    	ventanaJuego.lblMsg.setText("TURNO :"+ventanaOpciones.getNombreJugador(partida.getTurno())+" "+partida.getFigura(1));
+ 	    	ventanaJuego.lblMsg.setText("TURNO :"+ventanaOpciones.getNombreJugador(partida.getTurno()));
  	    	ventanaJuego.setTitle("PARTIDA MULTIJUGADOR");	     		    		    
  	    }
  	    else 	    

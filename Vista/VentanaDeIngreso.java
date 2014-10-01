@@ -24,6 +24,7 @@ public class VentanaDeIngreso extends JFrame
 	public JButton btnIniciarPartida;
 	private ImageIcon cursorImg;    
     private Cursor cursor;
+    public JButton btnJugarEnLan;
 
 	public VentanaDeIngreso()
 	{
@@ -55,8 +56,7 @@ public class VentanaDeIngreso extends JFrame
 		btnCargarPartida.setBounds(225, 138, 187, 35);
 		contentPane.add(btnCargarPartida);
 		
-		JButton btnJugarEnLan = new JButton("JUGAR EN LAN");
-		btnJugarEnLan.setEnabled(false);
+		btnJugarEnLan = new JButton("JUGAR EN LAN");
 		btnJugarEnLan.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 16));
 		btnJugarEnLan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -88,8 +88,8 @@ public class VentanaDeIngreso extends JFrame
 		contentPane.add(lblTresEnRaya);
 		
 		JLabel lblImg = new JLabel("img");
-		lblImg.setIcon(new ImageIcon(VentanaDeIngreso.class.getResource("tres_en_raya.jpg")));
-		lblImg.setBounds(12, 67, 187, 168);
+		lblImg.setIcon(new ImageIcon(VentanaDeIngreso.class.getResource("/imagenes/bart02.gif")));
+		lblImg.setBounds(26, 65, 87, 183);
 		contentPane.add(lblImg);
 		
 		cursorImg = new ImageIcon("Cursores/cursor1.png");
